@@ -4,6 +4,8 @@
 
 这是社区移植项目，不是 E2B 官方发布的 Dart SDK。实现参照 [E2B 官方文档](https://docs.e2b.dev/) 与 [JS SDK 2.55.0](https://github.com/e2b-dev/E2B/tree/df6c368152b067512702fc677952c0fc4e13c2f0/packages/js-sdk)，固定参考提交 `df6c368152b067512702fc677952c0fc4e13c2f0`。传输直接使用 E2B REST 与 envd Connect JSON 协议，不需要 Node.js 中转。
 
+版本号跟随所对齐的官方 JS SDK：当前为 `2.55.0-dev.1`。开发迭代递增 `-dev.N`，候选发布使用 `-rc.N`；通过完整验收后移除尾缀。版本对齐表示参考基准一致，不代表已通过完整等价验收。
+
 ## 平台验证状态
 
 当前已验证 Dart 3.5.4 测试运行、Chrome 本地网络、Flutter Web JavaScript/Wasm 构建，以及 macOS arm64 沙盒应用的本地管理/文件/命令协议。

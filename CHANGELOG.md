@@ -1,11 +1,13 @@
-## 0.1.0
+## 2.55.0-dev.1
+
+- Align the package and request metadata version with the pinned official JS SDK; use `-dev.N` for development revisions.
 
 - Initial pure Dart SDK for E2B sandbox lifecycle and pagination.
 - Connect JSON command execution, background handles, stdin, PTY and filesystem watch.
 - Binary/text file upload and download, filesystem metadata and directory operations.
 - Injectable HTTP client, typed errors, protocol tests and Dart VM/web examples.
 
-## Unreleased — full JS parity work
+### JS parity work
 
 - Add Dockerfile RUN/COPY heredoc conversion, shebang scripts, tab stripping and literal command-substitution handling with official converter vectors.
 

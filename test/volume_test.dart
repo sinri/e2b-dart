@@ -336,7 +336,7 @@ void main() {
           if (request.url.path == '/volumes') return json(volume);
           expect(request.headers['lang'], 'dart');
           expect(request.headers['publisher'], 'custom');
-          expect(request.headers['package_version'], '0.1.0');
+          expect(request.headers['package_version'], sdkVersion);
           return http.Response('abc', 200, reasonPhrase: 'OK');
         }));
     addTearDown(client.close);

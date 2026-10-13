@@ -1,5 +1,5 @@
 name: e2b
-version: 0.1.0
+version: 2.55.0-dev.1
 description: A Dart and Flutter SDK for E2B sandboxes, commands, PTY and filesystem operations.
 environment:
   sdk: '>=3.5.4 <4.0.0'

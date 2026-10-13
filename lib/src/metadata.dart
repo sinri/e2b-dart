@@ -1,7 +1,7 @@
 import 'metadata_stub.dart' if (dart.library.io) 'metadata_io.dart' as platform;
 
-/// Dart package version, independent of the pinned JS reference version.
-const sdkVersion = '0.1.0';
+/// Matches the pinned official JS version with a Dart development suffix.
+const sdkVersion = '2.55.0-dev.1';
 
 Map<String, String> get defaultHeaders => {
       'browser': 'unknown',
