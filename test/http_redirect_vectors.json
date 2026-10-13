@@ -1,0 +1,152 @@
+[
+  {
+    "status": 301,
+    "method": "POST",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 301,
+    "method": "PUT",
+    "expectedMethod": "PUT",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 301,
+    "method": "PATCH",
+    "expectedMethod": "PATCH",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 301,
+    "method": "GET",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 301,
+    "method": "HEAD",
+    "expectedMethod": "HEAD",
+    "expectedBody": ""
+  },
+  {
+    "status": 302,
+    "method": "POST",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 302,
+    "method": "PUT",
+    "expectedMethod": "PUT",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 302,
+    "method": "PATCH",
+    "expectedMethod": "PATCH",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 302,
+    "method": "GET",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 302,
+    "method": "HEAD",
+    "expectedMethod": "HEAD",
+    "expectedBody": ""
+  },
+  {
+    "status": 303,
+    "method": "POST",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 303,
+    "method": "PUT",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 303,
+    "method": "PATCH",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 303,
+    "method": "GET",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 303,
+    "method": "HEAD",
+    "expectedMethod": "HEAD",
+    "expectedBody": ""
+  },
+  {
+    "status": 307,
+    "method": "POST",
+    "expectedMethod": "POST",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 307,
+    "method": "PUT",
+    "expectedMethod": "PUT",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 307,
+    "method": "PATCH",
+    "expectedMethod": "PATCH",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 307,
+    "method": "GET",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 307,
+    "method": "HEAD",
+    "expectedMethod": "HEAD",
+    "expectedBody": ""
+  },
+  {
+    "status": 308,
+    "method": "POST",
+    "expectedMethod": "POST",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 308,
+    "method": "PUT",
+    "expectedMethod": "PUT",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 308,
+    "method": "PATCH",
+    "expectedMethod": "PATCH",
+    "expectedBody": "payload"
+  },
+  {
+    "status": 308,
+    "method": "GET",
+    "expectedMethod": "GET",
+    "expectedBody": ""
+  },
+  {
+    "status": 308,
+    "method": "HEAD",
+    "expectedMethod": "HEAD",
+    "expectedBody": ""
+  }
+]

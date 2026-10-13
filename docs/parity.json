@@ -1,0 +1,1302 @@
+{
+  "upstream": {
+    "package": "e2b",
+    "version": "2.55.0",
+    "commit": "df6c368152b067512702fc677952c0fc4e13c2f0"
+  },
+  "policy": "Public method candidates only. Overloads collapsed; getters, exported types and top-level functions are audited separately. implemented means code exists, not that full equivalence is proven. See PARITY.md.",
+  "methods": [
+    {
+      "symbol": "connectionConfig.ts:static setIntegration",
+      "upstreamLine": 440,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "connectionConfig.ts:getSignal",
+      "upstreamLine": 543,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "connectionConfig.ts:getSandboxUrl",
+      "upstreamLine": 547,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "connectionConfig.ts:getSandboxDirectUrl",
+      "upstreamLine": 569,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "connectionConfig.ts:getHost",
+      "upstreamLine": 584,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "secret.ts:nextItems",
+      "upstreamLine": 120,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "secret.ts:static create",
+      "upstreamLine": 167,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "secret.ts:static update",
+      "upstreamLine": 207,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "secret.ts:static getInfo",
+      "upstreamLine": 254,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "secret.ts:static list",
+      "upstreamLine": 303,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "secret.ts:static exists",
+      "upstreamLine": 315,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "secret.ts:static destroy",
+      "upstreamLine": 338,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "secret.ts:static fill",
+      "upstreamLine": 385,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "secret.ts:static iamToken",
+      "upstreamLine": 413,
+      "status": "implemented",
+      "dart": "lib/src/secret.dart",
+      "evidence": [
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:static list",
+      "upstreamLine": 247,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:connect",
+      "upstreamLine": 467,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:fork",
+      "upstreamLine": 506,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:getHost",
+      "upstreamLine": 530,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:isRunning",
+      "upstreamLine": 552,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:setTimeout",
+      "upstreamLine": 585,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:updateNetwork",
+      "upstreamLine": 610,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:kill",
+      "upstreamLine": 628,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:pause",
+      "upstreamLine": 659,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:betaPause",
+      "upstreamLine": 666,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:createSnapshot",
+      "upstreamLine": 707,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:listSnapshots",
+      "upstreamLine": 722,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:getMcpUrl",
+      "upstreamLine": 735,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:getMcpToken",
+      "upstreamLine": 744,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:uploadUrl",
+      "upstreamLine": 765,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:downloadUrl",
+      "upstreamLine": 817,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:getInfo",
+      "upstreamLine": 866,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/index.ts:getMetrics",
+      "upstreamLine": 877,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static kill",
+      "upstreamLine": 1319,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static getInfo",
+      "upstreamLine": 1362,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static getFullInfo",
+      "upstreamLine": 1434,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static getMetrics",
+      "upstreamLine": 1449,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static setTimeout",
+      "upstreamLine": 1518,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static updateNetwork",
+      "upstreamLine": 1559,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static pause",
+      "upstreamLine": 1596,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static betaPause",
+      "upstreamLine": 1636,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static createSnapshot",
+      "upstreamLine": 1663,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static listSnapshots",
+      "upstreamLine": 1706,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:static deleteSnapshot",
+      "upstreamLine": 1718,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/sandboxApi.ts:nextItems",
+      "upstreamLine": 1995,
+      "status": "implemented",
+      "dart": "lib/src/client.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/index.ts:list",
+      "upstreamLine": 170,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/index.ts:sendStdin",
+      "upstreamLine": 202,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/index.ts:closeStdin",
+      "upstreamLine": 246,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/index.ts:kill",
+      "upstreamLine": 284,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/index.ts:connect",
+      "upstreamLine": 325,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/index.ts:run",
+      "upstreamLine": 366,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/commandHandle.ts:wait",
+      "upstreamLine": 166,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/commandHandle.ts:disconnect",
+      "upstreamLine": 195,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/commandHandle.ts:kill",
+      "upstreamLine": 206,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/commandHandle.ts:sendStdin",
+      "upstreamLine": 218,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/commandHandle.ts:closeStdin",
+      "upstreamLine": 239,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/pty.ts:create",
+      "upstreamLine": 108,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/pty.ts:connect",
+      "upstreamLine": 176,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/pty.ts:sendInput",
+      "upstreamLine": 232,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/pty.ts:resize",
+      "upstreamLine": 273,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/commands/pty.ts:kill",
+      "upstreamLine": 315,
+      "status": "partial",
+      "dart": "lib/src/commands.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:read",
+      "upstreamLine": 404,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:write",
+      "upstreamLine": 594,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:writeFiles",
+      "upstreamLine": 813,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:list",
+      "upstreamLine": 828,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:makeDir",
+      "upstreamLine": 873,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:rename",
+      "upstreamLine": 907,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:remove",
+      "upstreamLine": 944,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:exists",
+      "upstreamLine": 969,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:getInfo",
+      "upstreamLine": 1002,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/index.ts:watchDir",
+      "upstreamLine": 1039,
+      "status": "partial",
+      "dart": "lib/src/filesystem.dart",
+      "evidence": [
+        "test/sdk_test.dart",
+        "test/files_streaming_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/filesystem/watchHandle.ts:stop",
+      "upstreamLine": 97,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "sandbox/git/index.ts:clone",
+      "upstreamLine": 325,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.clone",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:init",
+      "upstreamLine": 403,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.init",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:remoteAdd",
+      "upstreamLine": 427,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.remoteAdd",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:remoteGet",
+      "upstreamLine": 472,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.remoteGet",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:status",
+      "upstreamLine": 494,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.status",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:branches",
+      "upstreamLine": 510,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.branches",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:createBranch",
+      "upstreamLine": 527,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.createBranch",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:checkoutBranch",
+      "upstreamLine": 543,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.checkoutBranch",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:deleteBranch",
+      "upstreamLine": 559,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.deleteBranch",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:add",
+      "upstreamLine": 576,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.add",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:commit",
+      "upstreamLine": 597,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.commit",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:reset",
+      "upstreamLine": 627,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.reset",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:restore",
+      "upstreamLine": 664,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.restore",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:push",
+      "upstreamLine": 710,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.push",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:pull",
+      "upstreamLine": 769,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.pull",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:setConfig",
+      "upstreamLine": 833,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.setConfig",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:getConfig",
+      "upstreamLine": 858,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.getConfig",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:dangerouslyAuthenticate",
+      "upstreamLine": 884,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.dangerouslyAuthenticate",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "sandbox/git/index.ts:configureUser",
+      "upstreamLine": 927,
+      "status": "partial",
+      "dart": "lib/src/git.dart:Git.configureUser",
+      "evidence": [
+        "test/git_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:static getInfo",
+      "upstreamLine": 200,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:static list",
+      "upstreamLine": 241,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:static destroy",
+      "upstreamLine": 267,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:list",
+      "upstreamLine": 305,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:makeDir",
+      "upstreamLine": 346,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:getInfo",
+      "upstreamLine": 395,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:exists",
+      "upstreamLine": 440,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:updateMetadata",
+      "upstreamLine": 461,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:readFile",
+      "upstreamLine": 515,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:writeFile",
+      "upstreamLine": 682,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "volume/index.ts:remove",
+      "upstreamLine": 750,
+      "status": "implemented",
+      "dart": "lib/src/volume.dart",
+      "evidence": [
+        "test/volume_test.dart"
+      ]
+    },
+    {
+      "symbol": "template/index.ts:static toJSON",
+      "upstreamLine": 98,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static toDockerfile",
+      "upstreamLine": 113,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static build",
+      "upstreamLine": 135,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static buildInBackground",
+      "upstreamLine": 219,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static getBuildStatus",
+      "upstreamLine": 272,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static exists",
+      "upstreamLine": 305,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static aliasExists",
+      "upstreamLine": 328,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static assignTags",
+      "upstreamLine": 359,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static removeTags",
+      "upstreamLine": 390,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:static getTags",
+      "upstreamLine": 420,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromDebianImage",
+      "upstreamLine": 433,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromUbuntuImage",
+      "upstreamLine": 437,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromFedoraImage",
+      "upstreamLine": 441,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromAlpineImage",
+      "upstreamLine": 445,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromArchImage",
+      "upstreamLine": 451,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromPythonImage",
+      "upstreamLine": 455,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromNodeImage",
+      "upstreamLine": 459,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromBunImage",
+      "upstreamLine": 463,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromBaseImage",
+      "upstreamLine": 467,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromImage",
+      "upstreamLine": 471,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromTemplate",
+      "upstreamLine": 504,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromDockerfile",
+      "upstreamLine": 517,
+      "status": "partial",
+      "dart": "lib/src/template.dart:Template.fromDockerfile",
+      "evidence": [
+        "test/dockerfile_test.dart",
+        "test/dockerfile_vectors.json"
+      ]
+    },
+    {
+      "symbol": "template/index.ts:fromAWSRegistry",
+      "upstreamLine": 533,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:fromGCPRegistry",
+      "upstreamLine": 561,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:copy",
+      "upstreamLine": 588,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:copyItems",
+      "upstreamLine": 636,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:remove",
+      "upstreamLine": 663,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:rename",
+      "upstreamLine": 679,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:makeDir",
+      "upstreamLine": 691,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:makeSymlink",
+      "upstreamLine": 704,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:runCmd",
+      "upstreamLine": 717,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:setWorkdir",
+      "upstreamLine": 742,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:setUser",
+      "upstreamLine": 753,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:pipInstall",
+      "upstreamLine": 764,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:npmInstall",
+      "upstreamLine": 790,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:bunInstall",
+      "upstreamLine": 815,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:aptInstall",
+      "upstreamLine": 840,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:addMcpServer",
+      "upstreamLine": 856,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:gitClone",
+      "upstreamLine": 870,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:setStartCmd",
+      "upstreamLine": 890,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:setReadyCmd",
+      "upstreamLine": 906,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:setEnvs",
+      "upstreamLine": 917,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:skipCache",
+      "upstreamLine": 931,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:betaDevContainerPrebuild",
+      "upstreamLine": 936,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/index.ts:betaSetDevContainerStart",
+      "upstreamLine": 950,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/readycmd.ts:getCmd",
+      "upstreamLine": 13,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/logger.ts:toString",
+      "upstreamLine": 25,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    },
+    {
+      "symbol": "template/logger.ts:logger",
+      "upstreamLine": 97,
+      "status": "pending",
+      "dart": null,
+      "evidence": []
+    }
+  ]
+}

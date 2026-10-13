@@ -1,0 +1,688 @@
+[
+  {
+    "input": "FROM alpine",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM node:22 AS app\nRUN [\"echo\", \"a b\"]\nENV A=\"a b\" B=two\nENTRYPOINT [\"node\",\"app.js\"]\nCMD [\"--port\",\"3000\"]",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "echo 'a b'"
+          ],
+          "force": false
+        },
+        {
+          "type": "ENV",
+          "args": [
+            "A",
+            "a b",
+            "B",
+            "two"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "startCmd": "node app.js --port 3000",
+      "readyCmd": "sleep 20",
+      "fromImage": "node:22"
+    }
+  },
+  {
+    "input": "ARG MODE=0755\nFROM ubuntu\nCOPY --chmod=$MODE --chown=user [\"a b\",\"c\",\"/app/\"]",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "ENV",
+          "args": [
+            "MODE",
+            "0755"
+          ],
+          "force": false
+        },
+        {
+          "type": "COPY",
+          "args": [
+            "a b",
+            "/app/",
+            "user",
+            "0755"
+          ],
+          "force": false
+        },
+        {
+          "type": "COPY",
+          "args": [
+            "c",
+            "/app/",
+            "user",
+            "0755"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "ubuntu"
+    }
+  },
+  {
+    "input": "FROM alpine\nENTRYPOINT [\"exec\"]\nCMD echo hi",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "startCmd": "exec /bin/sh -c 'echo hi'",
+      "readyCmd": "sleep 20",
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nENV legacy a b",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "ENV",
+          "args": [
+            "legacy",
+            "a b"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nUSER root\nWORKDIR /app\nRUN echo hi",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/app"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "echo hi"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nRUN <<EOF\necho hi\nEOF\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "echo hi\n"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nRUN <<-EOF\n\techo hi\n\tEOF\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "echo hi\n"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nRUN <<SCRIPT\n#!/bin/sh\necho hi\nSCRIPT\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "cat <<'E2B_HEREDOC_SCRIPT' >/tmp/SCRIPT\n#!/bin/sh\necho hi\nE2B_HEREDOC_SCRIPT\nchmod +x /tmp/SCRIPT && /tmp/SCRIPT\nE2B_EXIT=$?; rm -f /tmp/SCRIPT; exit $E2B_EXIT"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nRUN cat <<EOF > /tmp/a\nhello\nEOF\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "cat <<EOF > /tmp/a\nhello\nEOF"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nCOPY <<'EOF' /app/\nhello $USER `date` $(date)\nEOF\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "E2B_HEREDOC_DEST=/app/EOF\nmkdir -p \"$(dirname \"$E2B_HEREDOC_DEST\")\" && cat <<'E2B_HEREDOC_EOF' >\"$E2B_HEREDOC_DEST\"\nhello $USER `date` $(date)\nE2B_HEREDOC_EOF",
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nCOPY --chown=user --chmod=0755 <<EOF /app/file\nhello $USER ${USER:-fallback} `date` $(date)\nEOF\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "E2B_HEREDOC_DEST=/app/file\nif [ -d \"$E2B_HEREDOC_DEST\" ]; then E2B_HEREDOC_DEST=\"$E2B_HEREDOC_DEST\"/EOF; fi\nmkdir -p \"$(dirname \"$E2B_HEREDOC_DEST\")\" && cat <<E2B_HEREDOC_EOF >\"$E2B_HEREDOC_DEST\"\nhello $USER ${USER:-fallback} \\`date\\` \\$(date)\nE2B_HEREDOC_EOF\nchown user \"$E2B_HEREDOC_DEST\"\nchmod 755 \"$E2B_HEREDOC_DEST\"",
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nCOPY <<-EOF /app/file\n\thello\n\tEOF\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "E2B_HEREDOC_DEST=/app/file\nif [ -d \"$E2B_HEREDOC_DEST\" ]; then E2B_HEREDOC_DEST=\"$E2B_HEREDOC_DEST\"/EOF; fi\nmkdir -p \"$(dirname \"$E2B_HEREDOC_DEST\")\" && cat <<E2B_HEREDOC_EOF >\"$E2B_HEREDOC_DEST\"\nhello\nE2B_HEREDOC_EOF",
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nRUN cat <<A <<B\none\nA\ntwo\nB\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "cat <<A <<B\none\nA\ntwo\nB"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  },
+  {
+    "input": "FROM alpine\nCOPY <<EOF /app/file\n${VAR%\\*} ${VAR/pat/repl} \\$USER \\n\nEOF\n",
+    "expected": {
+      "steps": [
+        {
+          "type": "USER",
+          "args": [
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/"
+          ],
+          "force": false
+        },
+        {
+          "type": "RUN",
+          "args": [
+            "E2B_HEREDOC_DEST=/app/file\nif [ -d \"$E2B_HEREDOC_DEST\" ]; then E2B_HEREDOC_DEST=\"$E2B_HEREDOC_DEST\"/EOF; fi\nmkdir -p \"$(dirname \"$E2B_HEREDOC_DEST\")\" && cat <<E2B_HEREDOC_EOF >\"$E2B_HEREDOC_DEST\"\n${VAR%\\*} ${VAR/pat/repl} \\$USER n\nE2B_HEREDOC_EOF",
+            "root"
+          ],
+          "force": false
+        },
+        {
+          "type": "USER",
+          "args": [
+            "user"
+          ],
+          "force": false
+        },
+        {
+          "type": "WORKDIR",
+          "args": [
+            "/home/user"
+          ],
+          "force": false
+        }
+      ],
+      "force": false,
+      "fromImage": "alpine"
+    }
+  }
+]

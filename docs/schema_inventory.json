@@ -1,0 +1,320 @@
+{
+  "upstream": "e2b 2.55.0",
+  "commit": "df6c368152b067512702fc677952c0fc4e13c2f0",
+  "sourceSha256": "90ad2e8d072feb53f9c38f8404caa33ba3d2cb66332cd2aa345406e00ab02adb",
+  "policy": "Source inventory only; no generated Dart typing or behavioral parity inferred.",
+  "paths": [
+    {
+      "path": "/sandboxes",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}",
+      "methods": [
+        "get",
+        "delete"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/connect",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/fork",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/logs",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/metrics",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/network",
+      "methods": [
+        "put"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/pause",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/refreshes",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/resume",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/snapshots",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/sandboxes/{sandboxID}/timeout",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/sandboxes/metrics",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/secrets",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "path": "/secrets/{secretID}",
+      "methods": [
+        "get",
+        "post",
+        "delete"
+      ]
+    },
+    {
+      "path": "/snapshots",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/teams",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/teams/{teamID}/metrics",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/teams/{teamID}/metrics/max",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/templates",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/templates/{templateID}",
+      "methods": [
+        "get",
+        "delete",
+        "patch"
+      ]
+    },
+    {
+      "path": "/templates/{templateID}/builds/{buildID}/logs",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/templates/{templateID}/builds/{buildID}/status",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/templates/{templateID}/files/{hash}",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/templates/{templateID}/tags",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/templates/aliases/{alias}",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/templates/tags",
+      "methods": [
+        "post",
+        "delete"
+      ]
+    },
+    {
+      "path": "/v2/sandboxes",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "path": "/v2/sandboxes/{sandboxID}/connect",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/v2/sandboxes/{sandboxID}/logs",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/v2/templates",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "path": "/v2/templates/{templateID}",
+      "methods": [
+        "patch"
+      ]
+    },
+    {
+      "path": "/v2/templates/{templateID}/builds/{buildID}",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/v3/templates",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/volumes",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "path": "/volumes/{volumeID}",
+      "methods": [
+        "get",
+        "delete"
+      ]
+    }
+  ],
+  "schemas": [
+    "AssignedTemplateTags",
+    "AssignTemplateTagsRequest",
+    "AWSRegistry",
+    "BuildLogEntry",
+    "BuildStatusReason",
+    "ConnectSandbox",
+    "ConnectSandboxV2",
+    "CPUCount",
+    "DeleteTemplateTagsRequest",
+    "DiskSizeMB",
+    "EnvdVersion",
+    "EnvVars",
+    "Error",
+    "FromImageRegistry",
+    "GCPRegistry",
+    "GeneralRegistry",
+    "ListedSandbox",
+    "LogLevel",
+    "LogsDirection",
+    "LogsSource",
+    "MaxTeamMetric",
+    "Mcp",
+    "MemoryMB",
+    "MinFreeDiskMb",
+    "NewSandbox",
+    "NewSandboxV2",
+    "NewSecret",
+    "NewVolume",
+    "OrderDirection",
+    "ResumedSandbox",
+    "Sandbox",
+    "SandboxAutoResumeConfig",
+    "SandboxAutoResumeEnabled",
+    "SandboxDetail",
+    "SandboxEgressProxyConfig",
+    "SandboxesWithMetrics",
+    "SandboxForkRequest",
+    "SandboxForkResult",
+    "SandboxIam",
+    "SandboxIamToken",
+    "SandboxIamTokens",
+    "SandboxLifecycle",
+    "SandboxLog",
+    "SandboxLogEntry",
+    "SandboxLogs",
+    "SandboxLogsV2Response",
+    "SandboxMetadata",
+    "SandboxMetric",
+    "SandboxNetworkConfig",
+    "SandboxNetworkRule",
+    "SandboxNetworkTransform",
+    "SandboxNetworkUpdateConfig",
+    "SandboxOnTimeout",
+    "SandboxPauseRequest",
+    "SandboxRefreshRequest",
+    "SandboxSnapshotRequest",
+    "SandboxState",
+    "SandboxTimeoutRequest",
+    "SandboxVolumeMount",
+    "Secret",
+    "SecretMetadata",
+    "SecretUpdate",
+    "SnapshotInfo",
+    "Team",
+    "TeamMetric",
+    "TeamUser",
+    "Template",
+    "TemplateAliasResponse",
+    "TemplateBuild",
+    "TemplateBuildFileUpload",
+    "TemplateBuildInfo",
+    "TemplateBuildLogsResponse",
+    "TemplateBuildRequestV3",
+    "TemplateBuildStartV2",
+    "TemplateBuildStatus",
+    "TemplateRequestResponseV3",
+    "TemplateStep",
+    "TemplateTag",
+    "TemplateUpdateRequest",
+    "TemplateUpdateResponse",
+    "TemplateWithBuilds",
+    "Volume",
+    "VolumeAndToken"
+  ]
+}

@@ -1,0 +1,10 @@
+.dart_tool/
+build/
+coverage/
+.env
+.github/
+test/
+tool/
+docs/
+pubspec.lock
+example/flutter/lib/network_check.dart

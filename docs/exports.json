@@ -1,0 +1,2889 @@
+{
+  "upstream": {
+    "package": "e2b",
+    "version": "2.55.0",
+    "commit": "df6c368152b067512702fc677952c0fc4e13c2f0"
+  },
+  "policy": "Named entry-point exports including wildcard template exports. Type-only exports remain distinct from values. No member, overload, platform or behavioral parity is inferred. All mappings require audit.",
+  "exports": [
+    {
+      "name": "ALL_TRAFFIC",
+      "original": "ALL_TRAFFIC",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 114,
+      "module": "./sandbox/network",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "allTraffic"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Official all-traffic CIDR or optional headers transform represented in Dart. Empty static/callback transform objects preserve omitted headers; callbacks use NetworkRule.transformResolver. Full network module audit remains pending."
+    },
+    {
+      "name": "ApiClient",
+      "original": "ApiClient",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 1,
+      "module": "./api",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/api.dart",
+        "symbol": "ApiClient"
+      },
+      "evidence": [
+        "test/api_test.dart",
+        "test/api_endpoint_client_test.dart",
+        "test/api_middleware_test.dart",
+        "tool/api_middleware_oracle.mjs"
+      ],
+      "notes": "Management transport and raw api GET/HEAD/POST/PUT/PATCH/DELETE/OPTIONS/TRACE surface mapped in Dart; JSON raw results separate data/error from http.Response. Named construction, generic payloads and RequestOptions adapt JS config/openapi parameters. Middleware, parseAs, schema-generated paths/components and exhaustive serializers/error bodies remain pending; not full class equivalence. Low-level global/per-call Middleware use/eject, request replacement/short-circuit and reversed response/error hooks implemented and compared with pinned JS. Higher-level direct calls and streaming Response hook lifecycle remain unintegrated."
+    },
+    {
+      "name": "AuthenticationError",
+      "original": "AuthenticationError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "AuthenticationException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "BuildError",
+      "original": "BuildError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "BuildException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "BuildInfo",
+      "original": "BuildInfo",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "BuildInfo"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "已核对当前结果字段映射；Response 别名保留官方 buildID/templateID getters，标签 createdAt 为 UTC 毫秒。完整构造、异常数据和状态类型仍需审计。"
+    },
+    {
+      "name": "BuildOptions",
+      "original": "BuildOptions",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "BuildOptions / Templates.buildWithOptions / Templates.buildInBackgroundWithOptions"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "Structured legacy alias overload adapted to explicitly named Dart methods. tags/resources/cache/log callback plus nested RequestOptions forwarded. Resource values accept num; NaN/Infinity encode as null like JS. Static/bound factory and full option audit pending."
+    },
+    {
+      "name": "BuildStatusReason",
+      "original": "BuildStatusReason",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "BuildStatusReason"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "已核对当前结果字段映射；Response 别名保留官方 buildID/templateID getters，标签 createdAt 为 UTC 毫秒。完整构造、异常数据和状态类型仍需审计。 已对照 buildApi.ts 验证保留服务端 logs、reason 空日志默认、空 step 保留和日志 ANSI/日期转换。"
+    },
+    {
+      "name": "CommandConnectOpts",
+      "original": "CommandConnectOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 116,
+      "module": "./sandbox/commands",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/commands.dart",
+        "symbol": "Commands.connect named parameters"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/sdk_test.dart"
+      ],
+      "notes": "Request timeout/cancellation and process options mapped. JS background selects handle/result overload; Dart exposes start returning handle and run returning result. Callbacks support FutureOr and Duration uses milliseconds transport. Existing protocol regressions cover stream/default/version behavior; complete member audit and platform/service acceptance pending."
+    },
+    {
+      "name": "CommandExitError",
+      "original": "CommandExitError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 53,
+      "module": "./sandbox/commands/commandHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "CommandExitException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "CommandHandle",
+      "original": "CommandHandle",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 54,
+      "module": "./sandbox/commands/commandHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/commands.dart",
+        "symbol": "CommandHandle"
+      },
+      "evidence": [
+        "test/streaming_test.dart"
+      ],
+      "notes": "字段及等待/断开/kill/stdin 方法已有实现，流行为有测试；完整成员参数和端到端验证待完成。"
+    },
+    {
+      "name": "CommandRequestOpts",
+      "original": "CommandRequestOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 116,
+      "module": "./sandbox/commands",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/connection.dart",
+        "symbol": "RequestOptions requestTimeout/signal"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/sdk_test.dart"
+      ],
+      "notes": "Request timeout/cancellation and process options mapped. JS background selects handle/result overload; Dart exposes start returning handle and run returning result. Callbacks support FutureOr and Duration uses milliseconds transport. Existing protocol regressions cover stream/default/version behavior; complete member audit and platform/service acceptance pending."
+    },
+    {
+      "name": "CommandResult",
+      "original": "CommandResult",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 54,
+      "module": "./sandbox/commands/commandHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "CommandResult"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "官方四个结果字段已映射，额外 pid 已改为可选；退出异常实现同一结果接口。完整路径仍需审计。"
+    },
+    {
+      "name": "CommandStartOpts",
+      "original": "CommandStartOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 116,
+      "module": "./sandbox/commands",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/commands.dart",
+        "symbol": "Commands.run/start named parameters"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/sdk_test.dart"
+      ],
+      "notes": "Request timeout/cancellation and process options mapped. JS background selects handle/result overload; Dart exposes start returning handle and run returning result. Callbacks support FutureOr and Duration uses milliseconds transport. Existing protocol regressions cover stream/default/version behavior; complete member audit and platform/service acceptance pending."
+    },
+    {
+      "name": "Commands",
+      "original": "Commands",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 116,
+      "module": "./sandbox/commands",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/commands.dart",
+        "symbol": "Commands"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/sdk_test.dart"
+      ],
+      "notes": "Request timeout/cancellation and process options mapped. JS background selects handle/result overload; Dart exposes start returning handle and run returning result. Callbacks support FutureOr and Duration uses milliseconds transport. Existing protocol regressions cover stream/default/version behavior; complete member audit and platform/service acceptance pending."
+    },
+    {
+      "name": "ConnectionConfig",
+      "original": "ConnectionConfig",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 4,
+      "module": "./connectionConfig",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/connection.dart",
+        "symbol": "ConnectionConfig"
+      },
+      "evidence": [
+        "test/connection_public_surface_test.dart",
+        "test/connection_routing_test.dart",
+        "test/api_test.dart"
+      ],
+      "notes": "Resolved connection configuration with integration headers, URL routing, envdPort and shallow mergeOpts. Dart Duration/Uri replace JS millisecond/string representations; omit map keys for undefined while null stays explicit. Full members/defaults/errors/platform audit remains pending."
+    },
+    {
+      "name": "ConnectionConfigOpts",
+      "original": "ConnectionConfigOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 5,
+      "module": "./connectionConfig",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/connection.dart",
+        "symbol": "RequestOptions / ConnectionConfig constructors"
+      },
+      "evidence": [
+        "test/api_test.dart",
+        "test/connection_routing_test.dart"
+      ],
+      "notes": "Username 为 String 别名；连接配置以命名构造参数和 RequestOptions 表达，apiHeaders 覆盖 deprecated headers。逐次 sandboxUrl 已接入创建/连接及选项继承；httpVersion 尚缺，完整默认值/环境配置仍需审计。"
+    },
+    {
+      "name": "ConnectionOpts",
+      "original": "ConnectionOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 5,
+      "module": "./connectionConfig",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/connection.dart",
+        "symbol": "RequestOptions / ConnectionConfig constructors"
+      },
+      "evidence": [
+        "test/api_test.dart",
+        "test/connection_routing_test.dart"
+      ],
+      "notes": "Username 为 String 别名；连接配置以命名构造参数和 RequestOptions 表达，apiHeaders 覆盖 deprecated headers。逐次 sandboxUrl 已接入创建/连接及选项继承；httpVersion 尚缺，完整默认值/环境配置仍需审计。"
+    },
+    {
+      "name": "CopyItem",
+      "original": "CopyItem",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "CopyItem"
+      },
+      "evidence": [
+        "test/template_test.dart",
+        "tool/web_routing_smoke.dart"
+      ],
+      "notes": "src String/Iterable adapter and dest String; forceUpload/user/mode/resolveSymlinks/gzip forwarded by copyItems. Browser rejects empty and populated input before iteration. Node PathLike buffers/URLs and number mode range remain pending."
+    },
+    {
+      "name": "CreateSnapshotOpts",
+      "original": "CreateSnapshotOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "E2BClient.createSnapshot named parameters"
+      },
+      "evidence": [
+        "test/management_test.dart"
+      ],
+      "notes": "Pause mode/legacy keepMemory and alias forwarding, snapshot name/mode, resume restore omission and reboot memory=false mapped. Mode conflict diagnostic aligned. Complete error and transport acceptance remains under audit."
+    },
+    {
+      "name": "DockerfileSyntaxError",
+      "original": "DockerfileSyntaxError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 171,
+      "module": "./template/dockerfileParser",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/dockerfile.dart",
+        "symbol": "DockerfileSyntaxException"
+      },
+      "evidence": [
+        "test/dockerfile_test.dart"
+      ],
+      "notes": "Dart Exception naming adapter; standalone E2BException rather than TemplateException, matching upstream direct Error inheritance. name/message/optional line verified including zero/negative lines. Full parser throw sites and stack behavior still pending."
+    },
+    {
+      "name": "E2B",
+      "original": "E2B",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 166,
+      "module": "./client",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/e2b_client.dart",
+        "symbol": "E2B"
+      },
+      "evidence": [
+        "test/e2b_client_test.dart"
+      ],
+      "notes": "Four bound resource entry points and callable Template. SandboxResource forwards create/connect/info/kill/pause/betaPause/timeout/network/metrics/snapshots/fork; list returns paginator. Protocol regression covers six management paths and isolation. Resource constructors/static helpers and full factory behavioral audit still pending."
+    },
+    {
+      "name": "E2BClientOpts",
+      "original": "E2BClientOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 166,
+      "module": "./client",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/e2b_client.dart",
+        "symbol": "E2BClientOpts"
+      },
+      "evidence": [
+        "test/e2b_client_test.dart"
+      ],
+      "notes": "Structured client defaults via E2B.fromOptions; no constructor signal, matching Omit<ConnectionOpts, signal>. Derived E2B preserves bound resources and request header replacement/isolation. httpVersion now propagates through structured and derived client configurations; full connection defaults and runtime binding semantics audit pending."
+    },
+    {
+      "name": "EntryInfo",
+      "original": "EntryInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 40,
+      "module": "./sandbox/filesystem",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "EntryInfo"
+      },
+      "evidence": [
+        "test/enum_values_test.dart",
+        "test/file_metadata_test.dart",
+        "test/files_streaming_test.dart"
+      ],
+      "notes": "已核对公开字段；type 可选，未知 protobuf 类型映射 null；metadata 空映射 null；时间为 UTC 毫秒。WriteInfo 为 Dart interface，上传返回 EntryInfo 扩展。完整 HTTP/RPC 结果路径及无效数据仍需审计。"
+    },
+    {
+      "name": "FileNotFoundError",
+      "original": "FileNotFoundError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "FileNotFoundException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "FileType",
+      "original": "FileType",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 39,
+      "module": "./sandbox/filesystem",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "FileType"
+      },
+      "evidence": [
+        "test/enum_values_test.dart"
+      ],
+      "notes": "Dart 枚举小写命名，value/toJson 对应官方字符串值；FileType.directory 为 dir，VolumeFileType.directory 为 directory。文件/事件枚举额外含 unknown 扩展；周边返回模型仍需审计。"
+    },
+    {
+      "name": "FileUploadError",
+      "original": "FileUploadError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "FileUploadException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "Filesystem",
+      "original": "Filesystem",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 40,
+      "module": "./sandbox/filesystem",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/filesystem.dart",
+        "symbol": "Filesystem"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/files_streaming_test.dart"
+      ],
+      "notes": "Filesystem and callback watch implemented with protocol tests. Watch awaits event callback, skips unknown events, exits once, swallows terminal callback failure and supports repeated stop. Full members/defaults/error/platform audit remains pending."
+    },
+    {
+      "name": "FilesystemEvent",
+      "original": "FilesystemEvent",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 48,
+      "module": "./sandbox/filesystem/watchHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "FilesystemEvent"
+      },
+      "evidence": [
+        "test/enum_values_test.dart",
+        "test/streaming_test.dart"
+      ],
+      "notes": "type 映射为官方事件枚举，未指定/未知为 null 对应 undefined；rawType/eventType 为 Dart 扩展。entry 全字段仍需审计。"
+    },
+    {
+      "name": "FilesystemEventType",
+      "original": "FilesystemEventType",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 47,
+      "module": "./sandbox/filesystem/watchHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "FilesystemEventType"
+      },
+      "evidence": [
+        "test/enum_values_test.dart"
+      ],
+      "notes": "Dart 枚举小写命名，value/toJson 对应官方字符串值；FileType.directory 为 dir，VolumeFileType.directory 为 directory。文件/事件枚举额外含 unknown 扩展；周边返回模型仍需审计。"
+    },
+    {
+      "name": "FilesystemReadOpts",
+      "original": "FilesystemReadOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 40,
+      "module": "./sandbox/filesystem",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/filesystem.dart",
+        "symbol": "Filesystem read/readBytes/readStream options"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/files_streaming_test.dart"
+      ],
+      "notes": "Read gzip negotiation and stream idle timeout mapped; write gzip/octet-stream/metadata and envd gates implemented. Dart separates text/bytes/stream read methods. Full transport/default-user/platform acceptance remains under audit."
+    },
+    {
+      "name": "FilesystemWriteOpts",
+      "original": "FilesystemWriteOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 40,
+      "module": "./sandbox/filesystem",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/filesystem.dart",
+        "symbol": "Filesystem write/writeFiles options"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/files_streaming_test.dart"
+      ],
+      "notes": "Read gzip negotiation and stream idle timeout mapped; write gzip/octet-stream/metadata and envd gates implemented. Dart separates text/bytes/stream read methods. Full transport/default-user/platform acceptance remains under audit."
+    },
+    {
+      "name": "GetBuildStatusOptions",
+      "original": "GetBuildStatusOptions",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "Templates.getBuildStatus"
+      },
+      "evidence": [
+        "test/template_test.dart",
+        "test/js_number_test.dart"
+      ],
+      "notes": "logsOffset num named argument plus RequestOptions; absent offset omitted, explicit zero/negative/fractional values forwarded with JS number formatting. Build identifiers encoded as path segments. Shared connection options and static factory audit remain pending."
+    },
+    {
+      "name": "Git",
+      "original": "Git",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 125,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "All 19 public upstream async method names have Dart counterparts. Command option/credential restoration/status parsing regressions; clone depth supports JS number truthiness and formatting. WHATWG URL boundaries, full error/options audit and real Git service validation remain pending."
+    },
+    {
+      "name": "GitAddOpts",
+      "original": "GitAddOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.add named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Options represented as Dart named parameters plus GitRequestOptions. Optional flag and empty-value combinations checked against pinned JS command builder; inherited request options and real service acceptance remain under audit."
+    },
+    {
+      "name": "GitAuthError",
+      "original": "GitAuthError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "GitAuthException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "GitBranches",
+      "original": "GitBranches",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "GitBranches"
+      },
+      "evidence": [
+        "test/git_test.dart",
+        "test/enum_values_test.dart"
+      ],
+      "notes": "已核对公开字段/标签及分支、porcelain 解析器证据。GitStatusLabel/GitConfigScope 用枚举 value/toJson 对应官方字符串，GitResetMode 为 String 别名。完整参数、无效输入和真实 Git 服务仍待验证。"
+    },
+    {
+      "name": "GitCloneOpts",
+      "original": "GitCloneOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.clone named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Branch/depth/path truthiness, explicit empty destination with credentials, clone failure without cleanup, cleanup failure propagation, and credential stripping checked against pinned JS. Inherited request options and full URL parsing remain under audit."
+    },
+    {
+      "name": "GitCommitOpts",
+      "original": "GitCommitOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.commit named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Options represented as Dart named parameters plus GitRequestOptions. Optional flag and empty-value combinations checked against pinned JS command builder; inherited request options and real service acceptance remain under audit."
+    },
+    {
+      "name": "GitConfigOpts",
+      "original": "GitConfigOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.setConfig/getConfig/configureUser named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Config scope flags, repository path only for local scope, trimmed empty result, credential host/protocol trimming and explicit empty values, and stop-on-first-failure ordering checked against pinned upstream. Dart enum constrains scope statically; JS invalid dynamic scope throws at runtime. Inherited transport acceptance remains under audit."
+    },
+    {
+      "name": "GitConfigScope",
+      "original": "GitConfigScope",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "GitConfigScope"
+      },
+      "evidence": [
+        "test/git_test.dart",
+        "test/enum_values_test.dart"
+      ],
+      "notes": "已核对公开字段/标签及分支、porcelain 解析器证据。GitStatusLabel/GitConfigScope 用枚举 value/toJson 对应官方字符串，GitResetMode 为 String 别名。完整参数、无效输入和真实 Git 服务仍待验证。"
+    },
+    {
+      "name": "GitDangerouslyAuthenticateOpts",
+      "original": "GitDangerouslyAuthenticateOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.dangerouslyAuthenticate named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Config scope flags, repository path only for local scope, trimmed empty result, credential host/protocol trimming and explicit empty values, and stop-on-first-failure ordering checked against pinned upstream. Dart enum constrains scope statically; JS invalid dynamic scope throws at runtime. Inherited transport acceptance remains under audit."
+    },
+    {
+      "name": "GitDeleteBranchOpts",
+      "original": "GitDeleteBranchOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.deleteBranch named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Named parameters and GitRequestOptions represent official option fields. Default/empty remote and branch, setUpstream, fetch/overwrite grouping, force deletion, and existing credential failure regressions checked against pinned upstream. Inherited transport and real service acceptance remain under audit."
+    },
+    {
+      "name": "GitFileStatus",
+      "original": "GitFileStatus",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "GitFileStatus"
+      },
+      "evidence": [
+        "test/git_test.dart",
+        "test/enum_values_test.dart"
+      ],
+      "notes": "已核对公开字段/标签及分支、porcelain 解析器证据。GitStatusLabel/GitConfigScope 用枚举 value/toJson 对应官方字符串，GitResetMode 为 String 别名。完整参数、无效输入和真实 Git 服务仍待验证。"
+    },
+    {
+      "name": "GitInitOpts",
+      "original": "GitInitOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.init named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Options represented as Dart named parameters plus GitRequestOptions. Optional flag and empty-value combinations checked against pinned JS command builder; inherited request options and real service acceptance remain under audit."
+    },
+    {
+      "name": "GitPullOpts",
+      "original": "GitPullOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.pull named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Named parameters and GitRequestOptions represent official option fields. Default/empty remote and branch, setUpstream, fetch/overwrite grouping, force deletion, and existing credential failure regressions checked against pinned upstream. Inherited transport and real service acceptance remain under audit."
+    },
+    {
+      "name": "GitPushOpts",
+      "original": "GitPushOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.push named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Named parameters and GitRequestOptions represent official option fields. Default/empty remote and branch, setUpstream, fetch/overwrite grouping, force deletion, and existing credential failure regressions checked against pinned upstream. Inherited transport and real service acceptance remain under audit."
+    },
+    {
+      "name": "GitRemoteAddOpts",
+      "original": "GitRemoteAddOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.remoteAdd named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "Named parameters and GitRequestOptions represent official option fields. Default/empty remote and branch, setUpstream, fetch/overwrite grouping, force deletion, and existing credential failure regressions checked against pinned upstream. Inherited transport and real service acceptance remain under audit."
+    },
+    {
+      "name": "GitRequestOpts",
+      "original": "GitRequestOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "GitRequestOptions"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "命名参数替代 JS options 对象，共用 GitRequestOptions；requestTimeoutMs 适配嵌套 requestOptions.requestTimeout。reset 五种模式及空值/路径引用已验证，restore staged/worktree 默认与校验已核对。全部参数组合及云端执行仍待审计。"
+    },
+    {
+      "name": "GitResetMode",
+      "original": "GitResetMode",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "GitResetMode"
+      },
+      "evidence": [
+        "test/git_test.dart",
+        "test/enum_values_test.dart"
+      ],
+      "notes": "已核对公开字段/标签及分支、porcelain 解析器证据。GitStatusLabel/GitConfigScope 用枚举 value/toJson 对应官方字符串，GitResetMode 为 String 别名。完整参数、无效输入和真实 Git 服务仍待验证。"
+    },
+    {
+      "name": "GitResetOpts",
+      "original": "GitResetOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.reset named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "命名参数替代 JS options 对象，共用 GitRequestOptions；requestTimeoutMs 适配嵌套 requestOptions.requestTimeout。reset 五种模式及空值/路径引用已验证，restore staged/worktree 默认与校验已核对。全部参数组合及云端执行仍待审计。"
+    },
+    {
+      "name": "GitRestoreOpts",
+      "original": "GitRestoreOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "Git.restore named parameters"
+      },
+      "evidence": [
+        "test/git_test.dart"
+      ],
+      "notes": "命名参数替代 JS options 对象，共用 GitRequestOptions；requestTimeoutMs 适配嵌套 requestOptions.requestTimeout。reset 五种模式及空值/路径引用已验证，restore staged/worktree 默认与校验已核对。全部参数组合及云端执行仍待审计。"
+    },
+    {
+      "name": "GitStatus",
+      "original": "GitStatus",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "GitStatus"
+      },
+      "evidence": [
+        "test/git_test.dart",
+        "test/enum_values_test.dart"
+      ],
+      "notes": "已核对公开字段/标签及分支、porcelain 解析器证据。GitStatusLabel/GitConfigScope 用枚举 value/toJson 对应官方字符串，GitResetMode 为 String 别名。完整参数、无效输入和真实 Git 服务仍待验证。"
+    },
+    {
+      "name": "GitStatusLabel",
+      "original": "GitStatusLabel",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 126,
+      "module": "./sandbox/git",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/git.dart",
+        "symbol": "GitStatusLabel"
+      },
+      "evidence": [
+        "test/git_test.dart",
+        "test/enum_values_test.dart"
+      ],
+      "notes": "已核对公开字段/标签及分支、porcelain 解析器证据。GitStatusLabel/GitConfigScope 用枚举 value/toJson 对应官方字符串，GitResetMode 为 String 别名。完整参数、无效输入和真实 Git 服务仍待验证。"
+    },
+    {
+      "name": "GitUpstreamError",
+      "original": "GitUpstreamError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "GitUpstreamException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "HttpVersion",
+      "original": "HttpVersion",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 5,
+      "module": "./connectionConfig",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/connection.dart",
+        "symbol": "HttpVersion"
+      },
+      "evidence": [
+        "test/api_test.dart",
+        "test/fixtures/http_version_probe.dart"
+      ],
+      "notes": "String alias with official value validation, environment precedence and source-specific errors; options/config/client derivation/Volume binding implemented. Native transport still IOClient HTTP/1.1; HTTP/2 negotiation, version-specific pooling, proxy transport and full propagation audit remain incomplete."
+    },
+    {
+      "name": "InvalidArgumentError",
+      "original": "InvalidArgumentError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "InvalidArgumentException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "LogEntry",
+      "original": "LogEntry",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 182,
+      "module": "./template/logger",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "LogEntry"
+      },
+      "evidence": [
+        "test/build_logger_test.dart",
+        "test/template_test.dart"
+      ],
+      "notes": "日志时间字段统一 UTC 毫秒，ANSI 清理及 start/end debug 已验证。LogEntryLevel 为 String 别名，缺少 JS 字面量联合的静态限制；默认 logger 有本地 24 小时时间格式与 JS locale 差异。完整宿主行为待验证。"
+    },
+    {
+      "name": "LogEntryEnd",
+      "original": "LogEntryEnd",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 182,
+      "module": "./template/logger",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "LogEntryEnd"
+      },
+      "evidence": [
+        "test/build_logger_test.dart",
+        "test/template_test.dart"
+      ],
+      "notes": "日志时间字段统一 UTC 毫秒，ANSI 清理及 start/end debug 已验证。LogEntryLevel 为 String 别名，缺少 JS 字面量联合的静态限制；默认 logger 有本地 24 小时时间格式与 JS locale 差异。完整宿主行为待验证。"
+    },
+    {
+      "name": "LogEntryLevel",
+      "original": "LogEntryLevel",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 182,
+      "module": "./template/logger",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "LogEntryLevel"
+      },
+      "evidence": [
+        "test/build_logger_test.dart",
+        "test/template_test.dart"
+      ],
+      "notes": "日志时间字段统一 UTC 毫秒，ANSI 清理及 start/end debug 已验证。LogEntryLevel 为 String 别名，缺少 JS 字面量联合的静态限制；默认 logger 有本地 24 小时时间格式与 JS locale 差异。完整宿主行为待验证。"
+    },
+    {
+      "name": "LogEntryStart",
+      "original": "LogEntryStart",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 182,
+      "module": "./template/logger",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "LogEntryStart"
+      },
+      "evidence": [
+        "test/build_logger_test.dart",
+        "test/template_test.dart"
+      ],
+      "notes": "日志时间字段统一 UTC 毫秒，ANSI 清理及 start/end debug 已验证。LogEntryLevel 为 String 别名，缺少 JS 字面量联合的静态限制；默认 logger 有本地 24 小时时间格式与 JS locale 差异。完整宿主行为待验证。"
+    },
+    {
+      "name": "Logger",
+      "original": "Logger",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 35,
+      "module": "./logs",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/logs.dart",
+        "symbol": "Logger"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/connection_routing_test.dart"
+      ],
+      "notes": "Optional debug/info/warn/error callbacks map JS variadic arguments to Dart List<Object?>. API/multipart request/response formatting and response callback failure cleanup covered. Full RPC/API logger behavior audit remains pending."
+    },
+    {
+      "name": "McpServer",
+      "original": "McpServer",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 101,
+      "module": "./sandbox/mcp",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/mcp_generated.dart",
+        "symbol": "McpServer"
+      },
+      "evidence": [
+        "test/mcp_generated_test.dart",
+        "test/template_test.dart"
+      ],
+      "notes": "Generated from pinned schema: 265 named services, fields and required constructor arguments. Tests exercise full and minimal configurations. github/<repository> configurations use githubRepositories. Enum name surface is closed while upstream keyof includes dynamic github keys; full declaration comparison and runtime validation still pending. Upstream vectraAiRux required VECTRABASEURL has no declared property; follows generated TS by omitting it."
+    },
+    {
+      "name": "McpServerName",
+      "original": "McpServerName",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/mcp_generated.dart",
+        "symbol": "McpServerName"
+      },
+      "evidence": [
+        "test/mcp_generated_test.dart",
+        "test/template_test.dart"
+      ],
+      "notes": "Generated extensible string value object: 265 named constants and values plus githubRepository(repository) for dynamic github keys. Name/equality/hash and gateway command tested. Replaces enum, so enum index and exhaustive switches require migration. Full declaration and runtime audit remains pending."
+    },
+    {
+      "name": "NotEnoughSpaceError",
+      "original": "NotEnoughSpaceError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "NotEnoughSpaceException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "NotFoundError",
+      "original": "NotFoundError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "NotFoundException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "ProcessInfo",
+      "original": "ProcessInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 116,
+      "module": "./sandbox/commands",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "ProcessInfo"
+      },
+      "evidence": [
+        "test/streaming_test.dart"
+      ],
+      "notes": "pid/tag/cmd/args/envs/cwd 已映射；列表扁平化 config，空 tag/cwd 转 null。构造缺省 args/envs 为 Dart 扩展；缺失/异常协议 config 仍需审计。"
+    },
+    {
+      "name": "Pty",
+      "original": "Pty",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 116,
+      "module": "./sandbox/commands",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/commands.dart",
+        "symbol": "Pty"
+      },
+      "evidence": [
+        "test/streaming_test.dart"
+      ],
+      "notes": "Create/connect/input/resize/kill mapped. Default TERM/LANG/LC_ALL match official, explicit empty override preserved, zero size passed to RPC. Full members/error/platform/service audit remains pending."
+    },
+    {
+      "name": "PtyOutput",
+      "original": "PtyOutput",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 54,
+      "module": "./sandbox/commands/commandHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "PtyOutput"
+      },
+      "evidence": [
+        "test/streaming_test.dart"
+      ],
+      "notes": "输出为 Dart String/Uint8List typedef，无 JS 编译期品牌隔离。CommandResult 对应 exitCode/error/stdout/stderr，额外 pid 必填字段仍需接口审计。异步输出/UTF-8/退出已有流测试，不代表全参数验收通过。"
+    },
+    {
+      "name": "RateLimitError",
+      "original": "RateLimitError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "RateLimitException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "ReadyCmd",
+      "original": "ReadyCmd",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 173,
+      "module": "./template/readycmd",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "ReadyCmd"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "构造字符串并通过 getCmd 返回；Dart final 字段为语言适配。已核对固定源码；完整数值/Unicode 引用边界和真实构建运行仍待审计。"
+    },
+    {
+      "name": "Sandbox",
+      "original": "Sandbox",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 163,
+      "module": null,
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "Sandbox"
+      },
+      "evidence": [
+        "test/sandbox_static_test.dart",
+        "test/sdk_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Static create/connect and instance reconnect exposed together via exported Dart extension. Static factory-owned clients have close(); injected clients remain caller-owned. Other static management entries, constructor/subclass semantics and full member/type audit remain pending."
+    },
+    {
+      "name": "SandboxApiOpts",
+      "original": "SandboxApiOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/connection.dart",
+        "symbol": "RequestOptions"
+      },
+      "evidence": [
+        "test/management_test.dart",
+        "test/sdk_test.dart"
+      ],
+      "notes": "Official creation/connect/API option fields represented as named parameters plus RequestOptions. secure accepted and ignored; create defaults omitted; timeout uses ceil seconds. Dart options contain additional transport fields; full inherited connection/platform behavior remains under audit."
+    },
+    {
+      "name": "SandboxConnectOpts",
+      "original": "SandboxConnectOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "E2BClient.connect named parameters and RequestOptions"
+      },
+      "evidence": [
+        "test/management_test.dart",
+        "test/sdk_test.dart"
+      ],
+      "notes": "Official creation/connect/API option fields represented as named parameters plus RequestOptions. secure accepted and ignored; create defaults omitted; timeout uses ceil seconds. Dart options contain additional transport fields; full inherited connection/platform behavior remains under audit."
+    },
+    {
+      "name": "SandboxEgressProxyInfo",
+      "original": "SandboxEgressProxyInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SandboxEgressProxyInfo"
+      },
+      "evidence": [
+        "test/api_dates_test.dart"
+      ],
+      "notes": "Public Dart JSON Map alias; SandboxInfo getters project official response fields and omit egress password. Field structure, empty/false values and absence have regression evidence. Map alias does not enforce the TypeScript field shape or required keys; typed structural parity and full malformed response audit remain pending."
+    },
+    {
+      "name": "SandboxEgressProxyOpts",
+      "original": "SandboxEgressProxyOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "EgressProxy"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Fields and create/update materialization mapped. Nested ctx.iam.tokens now matches official context while ctx.tokens remains an alias. Dart uses separate static/resolver parameters for JS union fields. Full rule normalization, callback side effects and service/platform acceptance remain under audit."
+    },
+    {
+      "name": "SandboxError",
+      "original": "SandboxError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "SandboxException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "SandboxForkOpts",
+      "original": "SandboxForkOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "E2BClient.fork named parameters"
+      },
+      "evidence": [
+        "test/paginator_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Snapshot filters/limit/cursor and default names mapped; two-page cursor advancement/termination checked. Fork integer count range and official diagnostic mapped, Duration converts timeout. Generic paginator API and full error/connection behavior remain under audit."
+    },
+    {
+      "name": "SandboxIamOpts",
+      "original": "SandboxIamOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "SandboxIam"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Token audience preserved verbatim, tokenType accepts future strings. IAM reads caller map and validates names during body construction, skips null entries before validation, and snapshots materialized body. Creation materializes once before network callbacks and uses resulting token names. Full service/platform acceptance remains pending."
+    },
+    {
+      "name": "SandboxIamToken",
+      "original": "SandboxIamToken",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "IamToken"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Token audience preserved verbatim, tokenType accepts future strings. IAM reads caller map and validates names during body construction, skips null entries before validation, and snapshots materialized body. Creation materializes once before network callbacks and uses resulting token names. Full service/platform acceptance remains pending."
+    },
+    {
+      "name": "SandboxIamTokenType",
+      "original": "SandboxIamTokenType",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "SandboxIamTokenType"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Token audience preserved verbatim, tokenType accepts future strings. IAM reads caller map and validates names during body construction, skips null entries before validation, and snapshots materialized body. Creation materializes once before network callbacks and uses resulting token names. Full service/platform acceptance remains pending."
+    },
+    {
+      "name": "SandboxInfo",
+      "original": "SandboxInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SandboxInfo"
+      },
+      "evidence": [
+        "test/api_dates_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "已记录现有结果模型映射；Sandbox 日期/指标 timestamp 为 UTC 毫秒，Snapshot 对应 snapshotId/names。完整可选字段、无效日期与缺省值仍需逐项审计，非全等价证明。"
+    },
+    {
+      "name": "SandboxInfoLifecycle",
+      "original": "SandboxInfoLifecycle",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SandboxInfoLifecycle"
+      },
+      "evidence": [
+        "test/api_dates_test.dart"
+      ],
+      "notes": "Public Dart JSON Map alias; SandboxInfo getters project official response fields and omit egress password. Field structure, empty/false values and absence have regression evidence. Map alias does not enforce the TypeScript field shape or required keys; typed structural parity and full malformed response audit remain pending."
+    },
+    {
+      "name": "SandboxLifecycle",
+      "original": "SandboxLifecycle",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "SandboxLifecycle"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Nullable timeout action preserves API-owned default. Legacy keepMemory, mode exclusivity, pause-only memory and autoResume constraints mapped with official messages. Dart enums constrain action/mode instead of JS union runtime validation. Real service acceptance pending."
+    },
+    {
+      "name": "SandboxListOpts",
+      "original": "SandboxListOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "E2BClient.listPaginator named parameters"
+      },
+      "evidence": [
+        "test/paginator_test.dart"
+      ],
+      "notes": "List filters/order/limit/cursor mapped; empty template omitted. Mutable metadata/state are read when fetching each page, matching official referenced query collections. Replacing the enclosing JS query object is expressed through Dart parameters; full paginator errors/model parity remain under audit."
+    },
+    {
+      "name": "SandboxListOrder",
+      "original": "SandboxListOrder",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SandboxListOrder"
+      },
+      "evidence": [
+        "test/paginator_test.dart"
+      ],
+      "notes": "String unions represented by aliases. List filters/order/limit/cursor mapped; empty template omitted like pinned JS. Query source reference behavior and full paginator error/model parity remain under audit."
+    },
+    {
+      "name": "SandboxMetrics",
+      "original": "SandboxMetrics",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SandboxMetrics"
+      },
+      "evidence": [
+        "test/api_dates_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "已记录现有结果模型映射；Sandbox 日期/指标 timestamp 为 UTC 毫秒，Snapshot 对应 snapshotId/names。完整可选字段、无效日期与缺省值仍需逐项审计，非全等价证明。"
+    },
+    {
+      "name": "SandboxMetricsOpts",
+      "original": "SandboxMetricsOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "E2BClient.getMetrics named parameters"
+      },
+      "evidence": [
+        "test/management_test.dart",
+        "test/api_dates_test.dart"
+      ],
+      "notes": "Start/end converted from DateTime milliseconds using JS Math.round tie direction, including pre-epoch values. Missing success data returns empty list; debug skips request. Complete resource error mapping remains under audit."
+    },
+    {
+      "name": "SandboxNetworkInfo",
+      "original": "SandboxNetworkInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SandboxNetworkInfo"
+      },
+      "evidence": [
+        "test/api_dates_test.dart"
+      ],
+      "notes": "Public Dart JSON Map alias; SandboxInfo getters project official response fields and omit egress password. Field structure, empty/false values and absence have regression evidence. Map alias does not enforce the TypeScript field shape or required keys; typed structural parity and full malformed response audit remain pending."
+    },
+    {
+      "name": "SandboxNetworkOpts",
+      "original": "SandboxNetworkOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "SandboxNetwork"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Fields and create/update materialization mapped. Nested ctx.iam.tokens now matches official context while ctx.tokens remains an alias. Dart uses separate static/resolver parameters for JS union fields. Full rule normalization, callback side effects and service/platform acceptance remain under audit."
+    },
+    {
+      "name": "SandboxNetworkRule",
+      "original": "SandboxNetworkRule",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "NetworkRule"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Fields and create/update materialization mapped. Nested ctx.iam.tokens now matches official context while ctx.tokens remains an alias. Dart uses separate static/resolver parameters for JS union fields. Full rule normalization, callback side effects and service/platform acceptance remain under audit."
+    },
+    {
+      "name": "SandboxNetworkRuleInfo",
+      "original": "SandboxNetworkRuleInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SandboxNetworkRuleInfo"
+      },
+      "evidence": [
+        "test/api_dates_test.dart"
+      ],
+      "notes": "Public Dart JSON Map alias; SandboxInfo getters project official response fields and omit egress password. Field structure, empty/false values and absence have regression evidence. Map alias does not enforce the TypeScript field shape or required keys; typed structural parity and full malformed response audit remain pending."
+    },
+    {
+      "name": "SandboxNetworkRules",
+      "original": "SandboxNetworkRules",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "Map<String, List<NetworkRule>>"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Fields and create/update materialization mapped. Nested ctx.iam.tokens now matches official context while ctx.tokens remains an alias. Dart uses separate static/resolver parameters for JS union fields. Full rule normalization, callback side effects and service/platform acceptance remain under audit."
+    },
+    {
+      "name": "SandboxNetworkSelector",
+      "original": "SandboxNetworkSelector",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "SandboxNetwork allowOut/denyOut and resolver parameters"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Fields and create/update materialization mapped. Nested ctx.iam.tokens now matches official context while ctx.tokens remains an alias. Dart uses separate static/resolver parameters for JS union fields. Full rule normalization, callback side effects and service/platform acceptance remain under audit."
+    },
+    {
+      "name": "SandboxNetworkSelectorContext",
+      "original": "SandboxNetworkSelectorContext",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "NetworkSelectorContext"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Fields and create/update materialization mapped. Nested ctx.iam.tokens now matches official context while ctx.tokens remains an alias. Dart uses separate static/resolver parameters for JS union fields. Full rule normalization, callback side effects and service/platform acceptance remain under audit."
+    },
+    {
+      "name": "SandboxNetworkTransform",
+      "original": "SandboxNetworkTransform",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "NetworkTransformValue"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Official all-traffic CIDR or optional headers transform represented in Dart. Empty static/callback transform objects preserve omitted headers; callbacks use NetworkRule.transformResolver. Full network module audit remains pending."
+    },
+    {
+      "name": "SandboxNetworkTransformContext",
+      "original": "SandboxNetworkTransformContext",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "NetworkTransformContext"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Fields and create/update materialization mapped. Nested ctx.iam.tokens now matches official context while ctx.tokens remains an alias. Dart uses separate static/resolver parameters for JS union fields. Full rule normalization, callback side effects and service/platform acceptance remain under audit."
+    },
+    {
+      "name": "SandboxNetworkTransformResolver",
+      "original": "SandboxNetworkTransformResolver",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "NetworkTransformResolver"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Official all-traffic CIDR or optional headers transform represented in Dart. Empty static/callback transform objects preserve omitted headers; callbacks use NetworkRule.transformResolver. Full network module audit remains pending."
+    },
+    {
+      "name": "SandboxNetworkUpdate",
+      "original": "SandboxNetworkUpdate",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "SandboxNetwork.toJson(update: true)"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Fields and create/update materialization mapped. Nested ctx.iam.tokens now matches official context while ctx.tokens remains an alias. Dart uses separate static/resolver parameters for JS union fields. Full rule normalization, callback side effects and service/platform acceptance remain under audit."
+    },
+    {
+      "name": "SandboxNotFoundError",
+      "original": "SandboxNotFoundError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "SandboxNotFoundException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "SandboxNotRunningError",
+      "original": "SandboxNotRunningError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "SandboxNotRunningException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "SandboxOnResume",
+      "original": "SandboxOnResume",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "OnResume"
+      },
+      "evidence": [
+        "test/management_test.dart"
+      ],
+      "notes": "Pause mode/legacy keepMemory and alias forwarding, snapshot name/mode, resume restore omission and reboot memory=false mapped. Mode conflict diagnostic aligned. Complete error and transport acceptance remains under audit."
+    },
+    {
+      "name": "SandboxOnTimeout",
+      "original": "SandboxOnTimeout",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "TimeoutAction and SandboxLifecycle mode/keepMemory"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Nullable timeout action preserves API-owned default. Legacy keepMemory, mode exclusivity, pause-only memory and autoResume constraints mapped with official messages. Dart enums constrain action/mode instead of JS union runtime validation. Real service acceptance pending."
+    },
+    {
+      "name": "SandboxOpts",
+      "original": "SandboxOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "E2BClient.create named parameters and RequestOptions"
+      },
+      "evidence": [
+        "test/management_test.dart",
+        "test/sdk_test.dart"
+      ],
+      "notes": "Official creation/connect/API option fields represented as named parameters plus RequestOptions. secure accepted and ignored; create defaults omitted; timeout uses ceil seconds. Dart options contain additional transport fields; full inherited connection/platform behavior remains under audit."
+    },
+    {
+      "name": "SandboxPaginator",
+      "original": "SandboxPaginator",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "SandboxPaginator"
+      },
+      "evidence": [
+        "test/paginator_test.dart",
+        "test/e2b_client_test.dart",
+        "test/sandbox_paginator_http_test.dart"
+      ],
+      "notes": "Named public paginator; bound factories return concrete type. Existing lazy query/filter/cursor/concurrency/error behavior retained. Direct constructor accepts optional injected client; default per-page factory shares generic lifecycle logic. Full direct constructor and public options audit pending."
+    },
+    {
+      "name": "SandboxPauseOpts",
+      "original": "SandboxPauseOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "E2BClient.pause/betaPause named parameters"
+      },
+      "evidence": [
+        "test/management_test.dart"
+      ],
+      "notes": "Pause mode/legacy keepMemory and alias forwarding, snapshot name/mode, resume restore omission and reboot memory=false mapped. Mode conflict diagnostic aligned. Complete error and transport acceptance remains under audit."
+    },
+    {
+      "name": "SandboxState",
+      "original": "SandboxState",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SandboxState"
+      },
+      "evidence": [
+        "test/paginator_test.dart"
+      ],
+      "notes": "String unions represented by aliases. List filters/order/limit/cursor mapped; empty template omitted like pinned JS. Query source reference behavior and full paginator error/model parity remain under audit."
+    },
+    {
+      "name": "SandboxUnreachableError",
+      "original": "SandboxUnreachableError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "SandboxUnreachableException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "Secret",
+      "original": "Secret",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 103,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "Secrets / Secret"
+      },
+      "evidence": [
+        "test/secret_errors_test.dart",
+        "test/management_test.dart",
+        "test/paginator_test.dart"
+      ],
+      "notes": "Static CRUD/list/fill/iamToken plus client.Secret bound resource facade available. Default clients close per operation/page; injected clients caller-owned. Helper and paginator isolation tests verified. Full shared options, constructor/factory and runtime parity audit pending."
+    },
+    {
+      "name": "SecretCreateOpts",
+      "original": "SecretCreateOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 104,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "Secrets.create"
+      },
+      "evidence": [
+        "test/secret_errors_test.dart",
+        "test/management_test.dart",
+        "test/paginator_test.dart"
+      ],
+      "notes": "metadata named argument plus RequestOptions. Omitted metadata is absent from body; explicit empty metadata is sent. Empty name/value are forwarded as in upstream, without placeholder-name validation."
+    },
+    {
+      "name": "SecretDestroyOpts",
+      "original": "SecretDestroyOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 104,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "Secrets.destroy"
+      },
+      "evidence": [
+        "test/secret_errors_test.dart",
+        "test/management_test.dart",
+        "test/paginator_test.dart"
+      ],
+      "notes": "RequestOptions adapter; HTTP404 returns false and successful response returns true. Shared transport audit remains pending."
+    },
+    {
+      "name": "SecretError",
+      "original": "SecretError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "SecretException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "SecretExistsOpts",
+      "original": "SecretExistsOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 104,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "Secrets.exists"
+      },
+      "evidence": [
+        "test/secret_errors_test.dart",
+        "test/management_test.dart",
+        "test/paginator_test.dart"
+      ],
+      "notes": "RequestOptions adapter; returns false only for SecretNotFoundException from getInfo, propagating other failures."
+    },
+    {
+      "name": "SecretGetInfoOpts",
+      "original": "SecretGetInfoOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 104,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "Secrets.getInfo"
+      },
+      "evidence": [
+        "test/secret_errors_test.dart",
+        "test/management_test.dart",
+        "test/paginator_test.dart"
+      ],
+      "notes": "Connection options are expressed by RequestOptions; HTTP404 maps to SecretNotFoundException. Full shared connection option audit remains pending."
+    },
+    {
+      "name": "SecretInfo",
+      "original": "SecretInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 104,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "SecretInfo"
+      },
+      "evidence": [
+        "test/management_test.dart"
+      ],
+      "notes": "secretId/name/version/metadata/createdAt/updatedAt 已核对；空 metadata 默认空映射，日期 UTC 毫秒。Dart 不可变集合为接口适配；无效日期/异常数据仍待审计。"
+    },
+    {
+      "name": "SecretListOpts",
+      "original": "SecretListOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 104,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "Secrets.list"
+      },
+      "evidence": [
+        "test/secret_errors_test.dart",
+        "test/management_test.dart",
+        "test/paginator_test.dart"
+      ],
+      "notes": "limit and nextToken named arguments plus RequestOptions. No client-side default limit is inserted. Dart also permits a bound signal, beyond upstream type-level omission."
+    },
+    {
+      "name": "SecretNotFoundError",
+      "original": "SecretNotFoundError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "SecretNotFoundException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "SecretPaginator",
+      "original": "SecretPaginator",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 103,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "SecretPaginator"
+      },
+      "evidence": [
+        "test/secret_errors_test.dart",
+        "test/management_test.dart",
+        "test/paginator_test.dart"
+      ],
+      "notes": "Public paginator and static Secret.list added. Owned clients created/closed per page; injected client remains caller-owned. Generic cursor/conversion/concurrency and factory cleanup regression evidence. Full shared connection/runtime audit remains pending."
+    },
+    {
+      "name": "SecretUpdateOpts",
+      "original": "SecretUpdateOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 104,
+      "module": "./secret",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/secret.dart",
+        "symbol": "Secrets.update"
+      },
+      "evidence": [
+        "test/secret_errors_test.dart",
+        "test/management_test.dart",
+        "test/paginator_test.dart"
+      ],
+      "notes": "metadata named argument plus RequestOptions. Omitted metadata remains absent; explicit empty metadata replaces stored metadata. Path is encoded as a single segment."
+    },
+    {
+      "name": "ServiceBusyError",
+      "original": "ServiceBusyError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "ServiceBusyException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "SnapshotInfo",
+      "original": "SnapshotInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "SnapshotInfo"
+      },
+      "evidence": [
+        "test/api_dates_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "已记录现有结果模型映射；Sandbox 日期/指标 timestamp 为 UTC 毫秒，Snapshot 对应 snapshotId/names。完整可选字段、无效日期与缺省值仍需逐项审计，非全等价证明。"
+    },
+    {
+      "name": "SnapshotListOpts",
+      "original": "SnapshotListOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "E2BClient.listSnapshots named parameters"
+      },
+      "evidence": [
+        "test/paginator_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Snapshot filters/limit/cursor and default names mapped; two-page cursor advancement/termination checked. Fork integer count range and official diagnostic mapped, Duration converts timeout. Generic paginator API and full error/connection behavior remain under audit."
+    },
+    {
+      "name": "SnapshotMode",
+      "original": "SnapshotMode",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/network.dart",
+        "symbol": "SnapshotMode"
+      },
+      "evidence": [
+        "test/network_test.dart",
+        "test/management_test.dart"
+      ],
+      "notes": "Nullable timeout action preserves API-owned default. Legacy keepMemory, mode exclusivity, pause-only memory and autoResume constraints mapped with official messages. Dart enums constrain action/mode instead of JS union runtime validation. Real service acceptance pending."
+    },
+    {
+      "name": "SnapshotPaginator",
+      "original": "SnapshotPaginator",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 61,
+      "module": "./sandbox/sandboxApi",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "SnapshotPaginator"
+      },
+      "evidence": [
+        "test/paginator_test.dart",
+        "test/management_test.dart",
+        "test/sandbox_static_test.dart"
+      ],
+      "notes": "Named Dart paginator supports direct construction and Sandbox.listSnapshots. Real HTTP evidence covers lazy pages, filters, omitted limit, failed cursor preservation, per-call credential override, missing names, exhaustion and injected ownership. Full error, cancellation and platform audit remains pending."
+    },
+    {
+      "name": "Stderr",
+      "original": "Stderr",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 54,
+      "module": "./sandbox/commands/commandHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "Stderr"
+      },
+      "evidence": [
+        "test/streaming_test.dart"
+      ],
+      "notes": "输出为 Dart String/Uint8List typedef，无 JS 编译期品牌隔离。CommandResult 对应 exitCode/error/stdout/stderr，额外 pid 必填字段仍需接口审计。异步输出/UTF-8/退出已有流测试，不代表全参数验收通过。"
+    },
+    {
+      "name": "Stdout",
+      "original": "Stdout",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 54,
+      "module": "./sandbox/commands/commandHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "Stdout"
+      },
+      "evidence": [
+        "test/streaming_test.dart"
+      ],
+      "notes": "输出为 Dart String/Uint8List typedef，无 JS 编译期品牌隔离。CommandResult 对应 exitCode/error/stdout/stderr，额外 pid 必填字段仍需接口审计。异步输出/UTF-8/退出已有流测试，不代表全参数验收通过。"
+    },
+    {
+      "name": "Template",
+      "original": "Template",
+      "category": "value",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1294,
+      "module": null,
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "Template"
+      },
+      "evidence": [
+        "test/template_test.dart",
+        "test/dockerfile_test.dart"
+      ],
+      "notes": "One mutable Dart Template builder; official names available as type aliases. No TypeScript stage restrictions. Full member/static/default configuration and platform audit remains incomplete."
+    },
+    {
+      "name": "TemplateBase",
+      "original": "TemplateBase",
+      "category": "value",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 62,
+      "module": null,
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "TemplateBase"
+      },
+      "evidence": [
+        "test/template_test.dart",
+        "test/dockerfile_test.dart"
+      ],
+      "notes": "One mutable Dart Template builder; official names available as type aliases. No TypeScript stage restrictions. Full member/static/default configuration and platform audit remains incomplete."
+    },
+    {
+      "name": "TemplateBuildStatus",
+      "original": "TemplateBuildStatus",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "TemplateBuildStatus"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "状态 String 别名与响应类已分离；保留 building/waiting/ready/error 原始值。Dart 无 JS 字面量字符串联合的静态限制，完整边界仍待审计。"
+    },
+    {
+      "name": "TemplateBuildStatusResponse",
+      "original": "TemplateBuildStatusResponse",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "TemplateBuildStatusResponse"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "独立响应类，buildID/templateID getters 与 Dart buildId/templateId 并存，status 使用 TemplateBuildStatus 别名；完整异常响应及字段默认值仍需审计。 已对照 buildApi.ts 验证保留服务端 logs、reason 空日志默认、空 step 保留和日志 ANSI/日期转换。"
+    },
+    {
+      "name": "TemplateBuilder",
+      "original": "TemplateBuilder",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "TemplateBuilder"
+      },
+      "evidence": [
+        "test/template_test.dart",
+        "test/dockerfile_test.dart"
+      ],
+      "notes": "One mutable Dart Template builder; official names available as type aliases. No TypeScript stage restrictions. Full member/static/default configuration and platform audit remains incomplete."
+    },
+    {
+      "name": "TemplateClass",
+      "original": "TemplateClass",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "TemplateClass"
+      },
+      "evidence": [
+        "test/template_test.dart",
+        "test/dockerfile_test.dart"
+      ],
+      "notes": "One mutable Dart Template builder; official names available as type aliases. No TypeScript stage restrictions. Full member/static/default configuration and platform audit remains incomplete."
+    },
+    {
+      "name": "TemplateError",
+      "original": "TemplateError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "TemplateException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "TemplateTag",
+      "original": "TemplateTag",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "TemplateTag"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "已核对当前结果字段映射；Response 别名保留官方 buildID/templateID getters，标签 createdAt 为 UTC 毫秒。完整构造、异常数据和状态类型仍需审计。"
+    },
+    {
+      "name": "TemplateTagInfo",
+      "original": "TemplateTagInfo",
+      "category": "type",
+      "entrySource": "template/index.ts",
+      "upstreamLine": 1296,
+      "module": "./types",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "TemplateTagInfo"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "已核对当前结果字段映射；Response 别名保留官方 buildID/templateID getters，标签 createdAt 为 UTC 毫秒。完整构造、异常数据和状态类型仍需审计。"
+    },
+    {
+      "name": "TimeoutError",
+      "original": "TimeoutError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "SandboxTimeoutException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "Username",
+      "original": "Username",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 5,
+      "module": "./connectionConfig",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/connection.dart",
+        "symbol": "Username"
+      },
+      "evidence": [
+        "test/api_test.dart"
+      ],
+      "notes": "Username 为 String 别名；连接配置以命名构造参数和 RequestOptions 表达，apiHeaders 覆盖 deprecated headers。httpVersion 及逐次 sandboxUrl 尚缺，完整默认值/环境配置仍需审计。"
+    },
+    {
+      "name": "Volume",
+      "original": "Volume",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 148,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "Volume / Volumes"
+      },
+      "evidence": [
+        "test/volume_test.dart",
+        "test/proxy_test.dart"
+      ],
+      "notes": "Content methods are on Volume; management static methods are adapted to client.volumes. Official ClientFactory static/bound factory API remains incomplete. Read text now follows fetch malformed UTF-8 replacement. Blob return format requires platform-specific representation audit."
+    },
+    {
+      "name": "VolumeAndToken",
+      "original": "VolumeAndToken",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "VolumeAndToken"
+      },
+      "evidence": [
+        "test/volume_test.dart"
+      ],
+      "notes": "继承 VolumeInfo 并含 token/domain，空 domain 转 null；有效响应路径已有验证，异常响应待审计。"
+    },
+    {
+      "name": "VolumeApiOpts",
+      "original": "VolumeApiOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "VolumeRequestOptions"
+      },
+      "evidence": [
+        "test/volume_test.dart",
+        "test/proxy_test.dart"
+      ],
+      "notes": "token/domain/debug/apiUrl/headers/proxy/logger/signal and Duration requestTimeout represented. httpVersion is still missing; HTTP/2 parity remains open."
+    },
+    {
+      "name": "VolumeConnectionConfig",
+      "original": "VolumeConnectionConfig",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "Volume._transport"
+      },
+      "evidence": [
+        "test/volume_test.dart",
+        "test/proxy_test.dart"
+      ],
+      "notes": "Private connection resolution adapter covers domain/debug/token/API URL/proxy fallbacks and content credentials. No standalone public config class; HTTP version and full environment/runtime semantics remain open."
+    },
+    {
+      "name": "VolumeEntryStat",
+      "original": "VolumeEntryStat",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "VolumeEntryStat"
+      },
+      "evidence": [
+        "test/volume_test.dart"
+      ],
+      "notes": "日期 UTC 毫秒及文件字段已映射，原始字段保留 raw；type 使用可扩展 VolumeFileType 保留未知字符串。完整异常数据和调用路径仍需审计。"
+    },
+    {
+      "name": "VolumeError",
+      "original": "VolumeError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "VolumeException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "VolumeFileType",
+      "original": "VolumeFileType",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 148,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "VolumeFileType"
+      },
+      "evidence": [
+        "test/enum_values_test.dart"
+      ],
+      "notes": "Dart 字符串值对象保留四个官方常量；value/name/toJson 保留未知服务端字符串，支持值相等和哈希。替代闭合 enum 以保留官方未知值行为；Dart switch 表达方式不同。"
+    },
+    {
+      "name": "VolumeInfo",
+      "original": "VolumeInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "VolumeInfo"
+      },
+      "evidence": [
+        "test/volume_test.dart"
+      ],
+      "notes": "volumeId/name 已核对；Dart 构造接收 API volumeID 字段，调用返回对应 SDK 属性。完整构造接口仍需审计。"
+    },
+    {
+      "name": "VolumeMetadataOptions",
+      "original": "VolumeMetadataOptions",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "Volume.updateMetadata"
+      },
+      "evidence": [
+        "test/volume_test.dart",
+        "test/proxy_test.dart"
+      ],
+      "notes": "Deprecated upstream alias maps to the same uid/gid/mode named arguments; no separate Dart option object."
+    },
+    {
+      "name": "VolumeMetadataOpts",
+      "original": "VolumeMetadataOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "Volume.updateMetadata"
+      },
+      "evidence": [
+        "test/volume_test.dart",
+        "test/proxy_test.dart"
+      ],
+      "notes": "uid/gid/mode expressed as named nullable int arguments. Zero is retained; omitted fields are absent from JSON body."
+    },
+    {
+      "name": "VolumeNotFoundError",
+      "original": "VolumeNotFoundError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "VolumeNotFoundException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "VolumePathNotFoundError",
+      "original": "VolumePathNotFoundError",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 11,
+      "module": "./errors",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/errors.dart",
+        "symbol": "VolumePathNotFoundException"
+      },
+      "evidence": [
+        "test/error_hierarchy_test.dart"
+      ],
+      "notes": "Dart Error→Exception 命名适配；保留额外共同 E2BException 基类。已核对声明和继承测试；构造参数、字段、消息、stack/cause 及抛出路径仍需完整审计，非等价验收通过。"
+    },
+    {
+      "name": "VolumeReadOpts",
+      "original": "VolumeReadOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "Volume.readStream / VolumeRequestOptions"
+      },
+      "evidence": [
+        "test/volume_test.dart",
+        "test/proxy_test.dart"
+      ],
+      "notes": "Connection options use VolumeRequestOptions; streamIdleTimeoutMs represented by Duration idleTimeout. readFile/readBytes/readStream split the format overloads. Browser Blob format and complete cross-platform idle-timeout audit remain pending."
+    },
+    {
+      "name": "VolumeWriteOptions",
+      "original": "VolumeWriteOptions",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "Volume.makeDir / Volume.writeFile"
+      },
+      "evidence": [
+        "test/volume_test.dart",
+        "test/proxy_test.dart"
+      ],
+      "notes": "Deprecated upstream alias maps to the same named write arguments; no separate Dart option object."
+    },
+    {
+      "name": "VolumeWriteOpts",
+      "original": "VolumeWriteOpts",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 149,
+      "module": "./volume",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/volume.dart",
+        "symbol": "Volume.makeDir / Volume.writeFile"
+      },
+      "evidence": [
+        "test/volume_test.dart",
+        "test/proxy_test.dart"
+      ],
+      "notes": "uid/gid/mode/force named arguments retain zero and false; absent values omitted. Protocol matrix covers both endpoints."
+    },
+    {
+      "name": "WatchHandle",
+      "original": "WatchHandle",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 48,
+      "module": "./sandbox/filesystem/watchHandle",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/filesystem.dart",
+        "symbol": "WatchHandle"
+      },
+      "evidence": [
+        "test/streaming_test.dart",
+        "test/files_streaming_test.dart"
+      ],
+      "notes": "Filesystem and callback watch implemented with protocol tests. Watch awaits event callback, skips unknown events, exits once, swallows terminal callback failure and supports repeated stop. Full members/defaults/error/platform audit remains pending."
+    },
+    {
+      "name": "WriteInfo",
+      "original": "WriteInfo",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 40,
+      "module": "./sandbox/filesystem",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/models.dart",
+        "symbol": "WriteInfo"
+      },
+      "evidence": [
+        "test/enum_values_test.dart",
+        "test/file_metadata_test.dart",
+        "test/files_streaming_test.dart"
+      ],
+      "notes": "已核对公开字段；type 可选，未知 protobuf 类型映射 null；metadata 空映射 null；时间为 UTC 毫秒。WriteInfo 为 Dart interface，上传返回 EntryInfo 扩展。完整 HTTP/RPC 结果路径及无效数据仍需审计。"
+    },
+    {
+      "name": "components",
+      "original": "components",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 2,
+      "module": "./api",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/api_schema_generated.dart",
+        "symbol": "ApiSchema*"
+      },
+      "evidence": [
+        "test/api_schema_test.dart",
+        "tool/generate_api_schema.py",
+        "docs/SCHEMA_API.md",
+        "docs/schema_inventory.json",
+        "test/api_paths_test.dart",
+        "lib/src/api_paths_generated.dart"
+      ],
+      "notes": "83 exported schemas represented by 65 typed JSON view classes and 18 scalar/dictionary aliases. Source object field names/required flags checked against generated TS. Lazy field-type checks, wire strings/numbers, optional/null keys and unknown fields preserved. Named typed constructors support required/optional/null fields and recursive JSON conversion. Enum constraints, 10 shared status-specific error response views, 8 parameter aliases and 2 header aliases added; empty requestBodies/pathItems use Never. HTTP headers remain wire strings. Full behavioral/type audit and operation status unions remain incomplete."
+    },
+    {
+      "name": "default",
+      "original": "Sandbox",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 168,
+      "module": null,
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/client.dart",
+        "symbol": "Sandbox"
+      },
+      "evidence": [
+        "test/sandbox_static_test.dart",
+        "docs/SCHEMA_API.md"
+      ],
+      "notes": "Official default export aliases Sandbox. Dart libraries have named exports; import package:e2b/e2b.dart and use Sandbox, or a library prefix. Static creation/connect and instance ownership have local HTTP regression evidence. No duplicate default identifier is introduced. Full Sandbox behavior remains partially audited."
+    },
+    {
+      "name": "defaultBuildLogger",
+      "original": "defaultBuildLogger",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 182,
+      "module": "./template/logger",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/build_logger.dart",
+        "symbol": "defaultBuildLogger"
+      },
+      "evidence": [
+        "test/build_logger_test.dart",
+        "test/template_test.dart"
+      ],
+      "notes": "日志时间字段统一 UTC 毫秒，ANSI 清理及 start/end debug 已验证。LogEntryLevel 为 String 别名，缺少 JS 字面量联合的静态限制；默认 logger 有本地 24 小时时间格式与 JS locale 差异。完整宿主行为待验证。"
+    },
+    {
+      "name": "getSignature",
+      "original": "getSignature",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 37,
+      "module": "./sandbox/signature",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/signature.dart",
+        "symbol": "getSignature"
+      },
+      "evidence": [
+        "test/management_test.dart",
+        "test/signature_vectors.json"
+      ],
+      "notes": "Synchronous Dart SHA256/base64 adapter; message/runtime operation semantics aligned. Fractional expiration uses binary64 arithmetic; decimal/exponent thresholds shared by signature and URL. Node boundary vectors verified; rare shortest-decimal tie behavior and complete numeric corpus remain pending."
+    },
+    {
+      "name": "paths",
+      "original": "paths",
+      "category": "type",
+      "entrySource": "index.ts",
+      "upstreamLine": 2,
+      "module": "./api",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/api_paths_generated.dart",
+        "symbol": "ApiPaths"
+      },
+      "evidence": [
+        "test/api_paths_test.dart",
+        "tool/generate_api_paths.py",
+        "docs/SCHEMA_API.md",
+        "docs/schema_inventory.json"
+      ],
+      "notes": "47 callable method/path bindings generated for all 36 exported paths. Named typed path/query/body parameters and decoded success models/list responses; raw errors/status/headers retained. Five protocol regressions plus generated inventory/reproduction checks. Complete parameter and success/error status typing, enum/union constraints, all endpoint/cloud audits remain incomplete. All bindings forward body/path/query serializer callbacks; parameter and body required flags checked against exported TypeScript."
+    },
+    {
+      "name": "waitForFile",
+      "original": "waitForFile",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 173,
+      "module": "./template/readycmd",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "waitForFile"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "文件名经 shellQuote 后使用 -f，包含空格场景已有验证。已核对固定源码；完整数值/Unicode 引用边界和真实构建运行仍待审计。"
+    },
+    {
+      "name": "waitForPort",
+      "original": "waitForPort",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 173,
+      "module": "./template/readycmd",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "waitForPort"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "使用 ss 精确 source-port 过滤及非空输出检查，命令字符串与官方一致。已核对固定源码；完整数值/Unicode 引用边界和真实构建运行仍待审计。"
+    },
+    {
+      "name": "waitForProcess",
+      "original": "waitForProcess",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 173,
+      "module": "./template/readycmd",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "waitForProcess"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "进程名经 shellQuote 后传给 pgrep，包含单引号场景已有验证。已核对固定源码；完整数值/Unicode 引用边界和真实构建运行仍待审计。"
+    },
+    {
+      "name": "waitForTimeout",
+      "original": "waitForTimeout",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 173,
+      "module": "./template/readycmd",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "waitForTimeout"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "JS 毫秒参数适配 Dart Duration；秒数向下取整且最小 1。已核对固定源码；完整数值/Unicode 引用边界和真实构建运行仍待审计。"
+    },
+    {
+      "name": "waitForURL",
+      "original": "waitForURL",
+      "category": "value",
+      "entrySource": "index.ts",
+      "upstreamLine": 173,
+      "module": "./template/readycmd",
+      "status": "mapped_partial",
+      "dart": {
+        "file": "lib/src/template.dart",
+        "symbol": "waitForURL"
+      },
+      "evidence": [
+        "test/template_test.dart"
+      ],
+      "notes": "默认状态码 200，URL shellQuote 并以 curl/grep 检测；命令格式已有测试。已核对固定源码；完整数值/Unicode 引用边界和真实构建运行仍待审计。"
+    }
+  ]
+}

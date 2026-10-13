@@ -1,0 +1,54 @@
+[
+  {
+    "status": 301,
+    "body": "",
+    "rejected": true
+  },
+  {
+    "status": 301,
+    "body": "payload",
+    "rejected": true
+  },
+  {
+    "status": 302,
+    "body": "",
+    "rejected": true
+  },
+  {
+    "status": 302,
+    "body": "payload",
+    "rejected": true
+  },
+  {
+    "status": 303,
+    "body": "",
+    "rejected": false,
+    "expectedMethod": "GET"
+  },
+  {
+    "status": 303,
+    "body": "payload",
+    "rejected": false,
+    "expectedMethod": "GET"
+  },
+  {
+    "status": 307,
+    "body": "",
+    "rejected": true
+  },
+  {
+    "status": 307,
+    "body": "payload",
+    "rejected": true
+  },
+  {
+    "status": 308,
+    "body": "",
+    "rejected": true
+  },
+  {
+    "status": 308,
+    "body": "payload",
+    "rejected": true
+  }
+]

@@ -1,0 +1,563 @@
+{
+  "version": "openapi-fetch 0.17.0",
+  "vectors": [
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": null
+      },
+      "url": "https://example.test/test/%7Bid%7D/%7Bid%7D"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": ""
+      },
+      "url": "https://example.test/test//"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": 0
+      },
+      "url": "https://example.test/test/0/0"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": false
+      },
+      "url": "https://example.test/test/false/false"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": "世界 /?#"
+      },
+      "url": "https://example.test/test/%E4%B8%96%E7%95%8C%20%2F%3F%23/%E4%B8%96%E7%95%8C%20%2F%3F%23"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": []
+      },
+      "url": "https://example.test/test//"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": [
+          "a,b",
+          "x y",
+          null
+        ]
+      },
+      "url": "https://example.test/test/a%2Cb,x%20y,null/a%2Cb,x%20y,null"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": {}
+      },
+      "url": "https://example.test/test//"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": {
+          "a": 1,
+          "b": "x y",
+          "nil": null
+        }
+      },
+      "url": "https://example.test/test/a,1,b,x%20y,nil,null/a,1,b,x%20y,nil,null"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": {
+          "2": "two",
+          "10": "ten"
+        }
+      },
+      "url": "https://example.test/test/2,two,10,ten/2,two,10,ten"
+    },
+    {
+      "path": "/test/{id}/{id}",
+      "parameters": {
+        "id": {
+          "nested": [
+            1,
+            2
+          ]
+        }
+      },
+      "url": "https://example.test/test/nested,1%2C2/nested,1%2C2"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": null
+      },
+      "url": "https://example.test/test/%7Bid*%7D/%7Bid*%7D"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": ""
+      },
+      "url": "https://example.test/test//"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": 0
+      },
+      "url": "https://example.test/test/0/0"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": false
+      },
+      "url": "https://example.test/test/false/false"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": "世界 /?#"
+      },
+      "url": "https://example.test/test/%E4%B8%96%E7%95%8C%20%2F%3F%23/%E4%B8%96%E7%95%8C%20%2F%3F%23"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": []
+      },
+      "url": "https://example.test/test//"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": [
+          "a,b",
+          "x y",
+          null
+        ]
+      },
+      "url": "https://example.test/test/a%2Cb,x%20y,null/a%2Cb,x%20y,null"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": {}
+      },
+      "url": "https://example.test/test//"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": {
+          "a": 1,
+          "b": "x y",
+          "nil": null
+        }
+      },
+      "url": "https://example.test/test/a=1,b=x%20y,/a=1,b=x%20y,"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": {
+          "2": "two",
+          "10": "ten"
+        }
+      },
+      "url": "https://example.test/test/2=two,10=ten/2=two,10=ten"
+    },
+    {
+      "path": "/test/{id*}/{id*}",
+      "parameters": {
+        "id": {
+          "nested": [
+            1,
+            2
+          ]
+        }
+      },
+      "error": "Deeply-nested arrays/objects aren’t supported. Provide your own `querySerializer()` to handle these."
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": null
+      },
+      "url": "https://example.test/test/%7B.id%7D/%7B.id%7D"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": ""
+      },
+      "url": "https://example.test/test/"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": 0
+      },
+      "url": "https://example.test/test/.0/.0"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": false
+      },
+      "url": "https://example.test/test/.false/.false"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": "世界 /?#"
+      },
+      "url": "https://example.test/test/.%E4%B8%96%E7%95%8C%20%2F%3F%23/.%E4%B8%96%E7%95%8C%20%2F%3F%23"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": []
+      },
+      "url": "https://example.test/test/"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": [
+          "a,b",
+          "x y",
+          null
+        ]
+      },
+      "url": "https://example.test/test/.a%2Cb,x%20y,null/.a%2Cb,x%20y,null"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": {}
+      },
+      "url": "https://example.test/test/"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": {
+          "a": 1,
+          "b": "x y",
+          "nil": null
+        }
+      },
+      "url": "https://example.test/test/.a,1,b,x%20y,nil,null/.a,1,b,x%20y,nil,null"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": {
+          "2": "two",
+          "10": "ten"
+        }
+      },
+      "url": "https://example.test/test/.2,two,10,ten/.2,two,10,ten"
+    },
+    {
+      "path": "/test/{.id}/{.id}",
+      "parameters": {
+        "id": {
+          "nested": [
+            1,
+            2
+          ]
+        }
+      },
+      "url": "https://example.test/test/.nested,1%2C2/.nested,1%2C2"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": null
+      },
+      "url": "https://example.test/test/%7B.id*%7D/%7B.id*%7D"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": ""
+      },
+      "url": "https://example.test/test/"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": 0
+      },
+      "url": "https://example.test/test/.0/.0"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": false
+      },
+      "url": "https://example.test/test/.false/.false"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": "世界 /?#"
+      },
+      "url": "https://example.test/test/.%E4%B8%96%E7%95%8C%20%2F%3F%23/.%E4%B8%96%E7%95%8C%20%2F%3F%23"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": []
+      },
+      "url": "https://example.test/test/"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": [
+          "a,b",
+          "x y",
+          null
+        ]
+      },
+      "url": "https://example.test/test/.a%2Cb.x%20y.null/.a%2Cb.x%20y.null"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": {}
+      },
+      "url": "https://example.test/test/"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": {
+          "a": 1,
+          "b": "x y",
+          "nil": null
+        }
+      },
+      "url": "https://example.test/test/.a=1.b=x%20y./.a=1.b=x%20y."
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": {
+          "2": "two",
+          "10": "ten"
+        }
+      },
+      "url": "https://example.test/test/.2=two.10=ten/.2=two.10=ten"
+    },
+    {
+      "path": "/test/{.id*}/{.id*}",
+      "parameters": {
+        "id": {
+          "nested": [
+            1,
+            2
+          ]
+        }
+      },
+      "error": "Deeply-nested arrays/objects aren’t supported. Provide your own `querySerializer()` to handle these."
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": null
+      },
+      "url": "https://example.test/test/%7B;id%7D/%7B;id%7D"
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": ""
+      },
+      "url": "https://example.test/test/;id=/;id="
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": 0
+      },
+      "url": "https://example.test/test/;id=0/;id=0"
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": false
+      },
+      "url": "https://example.test/test/;id=false/;id=false"
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": "世界 /?#"
+      },
+      "url": "https://example.test/test/;id=%E4%B8%96%E7%95%8C%20%2F%3F%23/;id=%E4%B8%96%E7%95%8C%20%2F%3F%23"
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": []
+      },
+      "url": "https://example.test/test/;id=/;id="
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": [
+          "a,b",
+          "x y",
+          null
+        ]
+      },
+      "url": "https://example.test/test/;id=a%2Cb,x%20y,null/;id=a%2Cb,x%20y,null"
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": {}
+      },
+      "url": "https://example.test/test/;id=/;id="
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": {
+          "a": 1,
+          "b": "x y",
+          "nil": null
+        }
+      },
+      "url": "https://example.test/test/;id=a,1,b,x%20y,nil,null/;id=a,1,b,x%20y,nil,null"
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": {
+          "2": "two",
+          "10": "ten"
+        }
+      },
+      "url": "https://example.test/test/;id=2,two,10,ten/;id=2,two,10,ten"
+    },
+    {
+      "path": "/test/{;id}/{;id}",
+      "parameters": {
+        "id": {
+          "nested": [
+            1,
+            2
+          ]
+        }
+      },
+      "url": "https://example.test/test/;id=nested,1%2C2/;id=nested,1%2C2"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": null
+      },
+      "url": "https://example.test/test/%7B;id*%7D/%7B;id*%7D"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": ""
+      },
+      "url": "https://example.test/test/;id=/;id="
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": 0
+      },
+      "url": "https://example.test/test/;id=0/;id=0"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": false
+      },
+      "url": "https://example.test/test/;id=false/;id=false"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": "世界 /?#"
+      },
+      "url": "https://example.test/test/;id=%E4%B8%96%E7%95%8C%20%2F%3F%23/;id=%E4%B8%96%E7%95%8C%20%2F%3F%23"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": []
+      },
+      "url": "https://example.test/test/;/;"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": [
+          "a,b",
+          "x y",
+          null
+        ]
+      },
+      "url": "https://example.test/test/;id=a%2Cb;id=x%20y;/;id=a%2Cb;id=x%20y;"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": {}
+      },
+      "url": "https://example.test/test/;/;"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": {
+          "a": 1,
+          "b": "x y",
+          "nil": null
+        }
+      },
+      "url": "https://example.test/test/;a=1;b=x%20y;/;a=1;b=x%20y;"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": {
+          "2": "two",
+          "10": "ten"
+        }
+      },
+      "url": "https://example.test/test/;2=two;10=ten/;2=two;10=ten"
+    },
+    {
+      "path": "/test/{;id*}/{;id*}",
+      "parameters": {
+        "id": {
+          "nested": [
+            1,
+            2
+          ]
+        }
+      },
+      "error": "Deeply-nested arrays/objects aren’t supported. Provide your own `querySerializer()` to handle these."
+    }
+  ]
+}

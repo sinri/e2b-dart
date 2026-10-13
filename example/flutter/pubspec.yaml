@@ -1,0 +1,14 @@
+name: e2b_flutter_example
+publish_to: none
+environment:
+  sdk: '>=3.5.4 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  e2b:
+    path: ../..
+dev_dependencies:
+  lints: ^4.0.0
+  http: ^1.6.0
+  flutter_test:
+    sdk: flutter

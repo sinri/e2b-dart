@@ -1,0 +1,49 @@
+# Dart / Flutter generated state and build output (at any depth).
+.dart_tool/
+.packages
+.pub/
+.pub-cache/
+build/
+coverage/
+doc/api/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Local IDE and operating-system state.
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Helper runtimes and diagnostics.
+__pycache__/
+*.py[cod]
+node_modules/
+*.log
+
+# Local credentials and environment overrides.
+.env
+.env.*
+!.env.example
+!.env.sample
+credentials.json
+service-account*.json
+key.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.mobileprovision
+*.key
+*.pem
+# Intentionally public localhost TLS fixtures used by protocol tests.
+!test/fixtures/http2-local-key.pem
+!test/fixtures/http2-local-cert.pem
+!test/fixtures/https-proxy-local-key.pem
+!test/fixtures/https-proxy-local-cert.pem
+
+# Keep pubspec.lock files for reproducible SDK/example validation.

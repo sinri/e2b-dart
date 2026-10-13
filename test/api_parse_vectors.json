@@ -1,0 +1,528 @@
+{
+  "version": "openapi-fetch 0.17.0",
+  "node": "v22.21.1",
+  "vectors": [
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "json",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "json",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "throws",
+      "error": "SyntaxError"
+    },
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "json",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": {
+        "a": 1
+      }
+    },
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "text",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": ""
+    },
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "text",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": "plain"
+    },
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "text",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": "{\"a\":1}"
+    },
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "arrayBuffer",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "bytes",
+      "expected": []
+    },
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "arrayBuffer",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "bytes",
+      "expected": [
+        112,
+        108,
+        97,
+        105,
+        110
+      ]
+    },
+    {
+      "status": 200,
+      "method": "GET",
+      "parseAs": "arrayBuffer",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "bytes",
+      "expected": [
+        123,
+        34,
+        97,
+        34,
+        58,
+        49,
+        125
+      ]
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "json",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "json",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "json",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "text",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "text",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "text",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "arrayBuffer",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "arrayBuffer",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 200,
+      "method": "HEAD",
+      "parseAs": "arrayBuffer",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "json",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": ""
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "json",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": "plain"
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "json",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": {
+        "a": 1
+      }
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "text",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": ""
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "text",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": "plain"
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "text",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": {
+        "a": 1
+      }
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "arrayBuffer",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": ""
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "arrayBuffer",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": "plain"
+    },
+    {
+      "status": 400,
+      "method": "GET",
+      "parseAs": "arrayBuffer",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": {
+        "a": 1
+      }
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "json",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "json",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "json",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "text",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "text",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "text",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "arrayBuffer",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "arrayBuffer",
+      "body": "plain",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 400,
+      "method": "HEAD",
+      "parseAs": "arrayBuffer",
+      "body": "{\"a\":1}",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 304,
+      "method": "GET",
+      "parseAs": "json",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": ""
+    },
+    {
+      "status": 304,
+      "method": "GET",
+      "parseAs": "text",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": ""
+    },
+    {
+      "status": 304,
+      "method": "GET",
+      "parseAs": "arrayBuffer",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "value",
+      "expected": ""
+    },
+    {
+      "status": 304,
+      "method": "HEAD",
+      "parseAs": "json",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 304,
+      "method": "HEAD",
+      "parseAs": "text",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 304,
+      "method": "HEAD",
+      "parseAs": "arrayBuffer",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 204,
+      "method": "GET",
+      "parseAs": "json",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 204,
+      "method": "GET",
+      "parseAs": "text",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 204,
+      "method": "GET",
+      "parseAs": "arrayBuffer",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 204,
+      "method": "HEAD",
+      "parseAs": "json",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 204,
+      "method": "HEAD",
+      "parseAs": "text",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    },
+    {
+      "status": 204,
+      "method": "HEAD",
+      "parseAs": "arrayBuffer",
+      "body": "",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "kind": "undefined"
+    }
+  ]
+}

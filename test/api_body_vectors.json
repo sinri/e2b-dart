@@ -1,0 +1,94 @@
+{
+  "version": "openapi-fetch 0.17.0",
+  "vectors": [
+    {
+      "body": {
+        "a": "hello world",
+        "b": "!*'()~"
+      },
+      "text": "a=hello+world&b=%21*%27%28%29%7E"
+    },
+    {
+      "body": {
+        "a": null,
+        "b": false,
+        "c": [
+          1,
+          null,
+          2
+        ],
+        "d": {
+          "x": 1
+        }
+      },
+      "text": "a=null&b=false&c=1%2C%2C2&d=%5Bobject+Object%5D"
+    },
+    {
+      "body": {
+        "2": "two",
+        "10": "ten",
+        "01": "one",
+        "unicode": "中文"
+      },
+      "text": "2=two&10=ten&01=one&unicode=%E4%B8%AD%E6%96%87"
+    },
+    {
+      "body": [
+        [
+          "a",
+          1
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          "nil",
+          null
+        ],
+        [
+          "array",
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "text": "a=1&a=2&nil=null&array=1%2C2"
+    },
+    {
+      "body": "?a=one+two&a=three&empty&x=a=b",
+      "text": "a=one+two&a=three&empty=&x=a%3Db"
+    },
+    {
+      "body": "&&a=%FF&b=%ZZ&c=%EF%BB%BF&d=%E2%82",
+      "text": "a=%EF%BF%BD&b=%25ZZ&c=%EF%BB%BF&d=%EF%BF%BD"
+    },
+    {
+      "body": "",
+      "text": ""
+    },
+    {
+      "body": "?",
+      "text": ""
+    },
+    {
+      "body": [
+        [
+          "a"
+        ]
+      ],
+      "error": "Each query pair must be an iterable [name, value] tuple"
+    },
+    {
+      "body": [
+        [
+          "a",
+          1,
+          2
+        ]
+      ],
+      "error": "Each query pair must be an iterable [name, value] tuple"
+    }
+  ]
+}

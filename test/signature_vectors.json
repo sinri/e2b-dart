@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/tmp/你好 &.txt",
+    "operation": "read",
+    "user": null,
+    "token": "token",
+    "expiration": null,
+    "signature": "v1_3PAosVkkldTGTuxbLOZNMzHaTwdbkL+skmmSrcX9hZ0"
+  },
+  {
+    "path": "",
+    "operation": "write",
+    "user": "user",
+    "token": "t+/=",
+    "expiration": 1700000060,
+    "signature": "v1_uzv9wuq4IfgLfJzLZTbbdQLH/yT7rYlpBg+lUbD0ZCQ"
+  },
+  {
+    "path": "/a:b",
+    "operation": "read",
+    "user": "root",
+    "token": "long-token",
+    "expiration": 0,
+    "signature": "v1_gz0KxE3hMU953I2fqXpG/TXkga4jGDKFNwA5yYkLaEA"
+  }
+]

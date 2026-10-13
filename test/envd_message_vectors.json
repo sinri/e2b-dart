@@ -1,0 +1,89 @@
+{
+  "node": "v22.21.1",
+  "vectors": [
+    {
+      "body": {
+        "message": null
+      },
+      "expected": "Fallback"
+    },
+    {
+      "body": {
+        "message": false
+      },
+      "expected": "Fallback"
+    },
+    {
+      "body": {
+        "message": true
+      },
+      "expected": "true"
+    },
+    {
+      "body": {
+        "message": 0
+      },
+      "expected": "Fallback"
+    },
+    {
+      "body": {
+        "message": 1
+      },
+      "expected": "1"
+    },
+    {
+      "body": {
+        "message": -1
+      },
+      "expected": "-1"
+    },
+    {
+      "body": {
+        "message": 1e+21
+      },
+      "expected": "1e+21"
+    },
+    {
+      "body": {
+        "message": ""
+      },
+      "expected": "Fallback"
+    },
+    {
+      "body": {
+        "message": "detail"
+      },
+      "expected": "detail"
+    },
+    {
+      "body": {
+        "message": []
+      },
+      "expected": ""
+    },
+    {
+      "body": {
+        "message": [
+          null,
+          1,
+          {}
+        ]
+      },
+      "expected": ",1,[object Object]"
+    },
+    {
+      "body": {
+        "message": {}
+      },
+      "expected": "[object Object]"
+    },
+    {
+      "body": {
+        "message": {
+          "a": 1
+        }
+      },
+      "expected": "[object Object]"
+    }
+  ]
+}

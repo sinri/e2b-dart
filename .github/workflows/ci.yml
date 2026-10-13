@@ -1,0 +1,41 @@
+name: Dart SDK
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sdk: ['3.5.4', stable]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.sdk }}
+      - run: dart pub get
+      - if: matrix.sdk == 'stable'
+        run: dart format --output=none --set-exit-if-changed lib test example
+      - run: dart analyze --fatal-infos
+      - run: dart test
+      - if: matrix.sdk == 'stable'
+        run: python3 tool/browser_network_test.py dart
+      - run: dart compile js example/web.dart -o /tmp/e2b-web.js
+      - run: dart compile js tool/web_routing_smoke.dart -o /tmp/e2b-routing.js
+      - run: node /tmp/e2b-routing.js
+      - run: dart compile js tool/web_volume_smoke.dart -o /tmp/e2b-volume.js
+      - run: node -e 'globalThis.self = globalThis; require("/tmp/e2b-volume.js")'
+
+  flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+        working-directory: example/flutter
+      - run: flutter analyze
+        working-directory: example/flutter
+      - run: flutter test
+        working-directory: example/flutter
+      - run: flutter build web --no-pub
+        working-directory: example/flutter

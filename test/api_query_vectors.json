@@ -1,0 +1,124 @@
+{
+  "version": "openapi-fetch 0.17.0",
+  "vectors": [
+    {
+      "query": {},
+      "url": "https://example.test/test"
+    },
+    {
+      "query": {
+        "empty": [],
+        "nil": null,
+        "value": ""
+      },
+      "url": "https://example.test/test?value="
+    },
+    {
+      "query": {
+        "state": [
+          "running",
+          "paused"
+        ]
+      },
+      "url": "https://example.test/test?state=running,paused"
+    },
+    {
+      "query": {
+        "a": [
+          "a,b",
+          "a b",
+          "x&y",
+          null,
+          false,
+          0
+        ]
+      },
+      "url": "https://example.test/test?a=a%2Cb,a%20b,x%26y,null,false,0"
+    },
+    {
+      "query": {
+        "a": [
+          [],
+          [
+            1,
+            2
+          ],
+          {}
+        ]
+      },
+      "url": "https://example.test/test?a=,1%2C2,%5Bobject%20Object%5D"
+    },
+    {
+      "query": {
+        "obj": {
+          "a": 1,
+          "b": "a b",
+          "nil": null,
+          "empty": ""
+        }
+      },
+      "url": "https://example.test/test?obj[a]=1&obj[b]=a%20b&&obj[empty]="
+    },
+    {
+      "query": {
+        "obj": {}
+      },
+      "url": "https://example.test/test"
+    },
+    {
+      "query": {
+        "before": 1,
+        "obj": {},
+        "after": 2
+      },
+      "url": "https://example.test/test?before=1&&after=2"
+    },
+    {
+      "query": {
+        "obj": {
+          "nested": {
+            "a": 1
+          }
+        }
+      },
+      "error": "Deeply-nested arrays/objects aren’t supported. Provide your own `querySerializer()` to handle these."
+    },
+    {
+      "query": {
+        "obj": {
+          "nested": [
+            1,
+            2
+          ]
+        }
+      },
+      "error": "Deeply-nested arrays/objects aren’t supported. Provide your own `querySerializer()` to handle these."
+    },
+    {
+      "query": {
+        "a b": "世界!*'()",
+        "世界": "/?#&="
+      },
+      "url": "https://example.test/test?a%20b=%E4%B8%96%E7%95%8C!*%27()&%E4%B8%96%E7%95%8C=%2F%3F%23%26%3D"
+    },
+    {
+      "query": {
+        "2": "two",
+        "10": "ten",
+        "01": "zero-one",
+        "name": true
+      },
+      "url": "https://example.test/test?2=two&10=ten&01=zero-one&name=true"
+    },
+    {
+      "query": {
+        "obj": {
+          "2": "two",
+          "10": "ten",
+          "01": "zero-one"
+        }
+      },
+      "url": "https://example.test/test?obj[2]=two&obj[10]=ten&obj[01]=zero-one"
+    }
+  ]
+}
